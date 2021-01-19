@@ -37,14 +37,6 @@ class Recipe
      */
     private $publishedAt;
 
-    //-------------Relation avec Category-----------------
-
-//    /**
-//     * @var Category
-//     * @ORM\ManyToOne(targetEntity="Category", inversedBy="recipes")
-//     */
-//    private $category;
-
     //----------------------------------------------------
 
     public function __construct()

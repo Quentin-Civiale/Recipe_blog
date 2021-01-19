@@ -28,7 +28,7 @@ class RecipeType extends AbstractType
                         'Entrée' => 'entrée',
                         'Plat' => 'plat',
                         'Dessert' => 'dessert',
-                        'Cocktail & boisson' => 'cockaitl & boisson',
+                        'Cocktail & boisson' => 'cocktail & boisson',
                         'Sauce' => 'sauce',
                     ]
                 ]
