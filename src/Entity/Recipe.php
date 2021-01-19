@@ -23,6 +23,11 @@ class Recipe
     private $title;
 
     /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $category;
+
+    /**
      * @ORM\Column(type="text")
      */
     private $content;
@@ -31,6 +36,14 @@ class Recipe
      * @ORM\Column(type="datetime", name="published_at")
      */
     private $publishedAt;
+
+    //-------------Relation avec Category-----------------
+
+//    /**
+//     * @var Category
+//     * @ORM\ManyToOne(targetEntity="Category", inversedBy="recipes")
+//     */
+//    private $category;
 
     //----------------------------------------------------
 
@@ -58,6 +71,16 @@ class Recipe
         return $this;
     }
 
+    public function getCategory()
+    {
+        return $this->category;
+    }
+
+    public function setCategory($category): void
+    {
+        $this->category = $category;
+    }
+
     public function getContent(): ?string
     {
         return $this->content;
@@ -81,4 +104,8 @@ class Recipe
 
         return $this;
     }
+
+    //--------------------------------------------------------
+
+
 }

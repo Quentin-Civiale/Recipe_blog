@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\Recipe;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -16,6 +17,21 @@ class RecipeType extends AbstractType
         $builder
             ->add('title', TextType::class, [
                 "label" => "Titre :"
+            ])
+            ->add('category', ChoiceType::class, [
+                "label" => "Catégorie de la recette :",
+                'required' => true,
+                'data' => '-- Choisissez une catégorie --',
+                'choices' => [
+                    'Choisissez une catégorie' => [
+                        '-- Choisissez une catégorie --' => '',
+                        'Entrée' => 'entrée',
+                        'Plat' => 'plat',
+                        'Dessert' => 'dessert',
+                        'Cocktail & boisson' => 'cockaitl & boisson',
+                        'Sauce' => 'sauce',
+                    ]
+                ]
             ])
             ->add('content', TextareaType::class, [
                 "label" => "Contenu :"
