@@ -84,4 +84,25 @@ class BlogController extends AbstractController
             "form" => $form->createView()
         ]);
     }
+
+    /**
+     * @Route("/modifier-recette N°{id}", name="blog_update")
+     * @param Request $request
+     * @param Recipe $recipe
+     * @return Response
+     */
+    public function update(Request $request, Recipe $recipe): Response
+    {
+        $form = $this->createForm(RecipeType::class, $recipe)->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+
+            $this->getDoctrine()->getManager()->flush();
+            return $this->redirectToRoute("blog_read", ["id" => $recipe->getId()]);
+        }
+
+        return $this->render("blog/update.html.twig", [
+            "form" => $form->createView()
+        ]);
+    }
 }
