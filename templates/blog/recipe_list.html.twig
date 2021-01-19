@@ -1,0 +1,18 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+    <div class="row">
+        <div class="col-12 mb-4">
+            <h1>Les Recettes</h1>
+            <p>Retrouvez ici toutes les recettes publiées par les utilisateurs.</p>
+        </div>
+    </div>
+
+    <ul>
+        {% for recipe in recipes %}
+            <li>
+                <a href="{{ path('show-recipe', {id : recipe.id}) }}">{{ recipe.title }}</a>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}
