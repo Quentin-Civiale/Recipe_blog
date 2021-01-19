@@ -32,6 +32,15 @@ class Recipe
      */
     private $publishedAt;
 
+    //----------------------------------------------------
+
+    public function __construct()
+    {
+        $this->publishedAt = new \DateTime();
+    }
+
+    //----------------------------------------------------
+
     public function getId(): ?int
     {
         return $this->id;
