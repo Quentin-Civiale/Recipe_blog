@@ -50,6 +50,7 @@ class BlogController extends AbstractController
             // on recherche les recettes correspondantes aux mots clés
             $recipes = $this->getDoctrine()->getRepository(Recipe::class)->search(
                 $search->get('title')->getData()
+//                $search->get('category')->getData()
             );
         }
 
