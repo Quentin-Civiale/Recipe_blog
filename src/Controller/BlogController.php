@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Recipe;
+use App\Form\RecipeSearchType;
 use App\Form\RecipeType;
 use Doctrine\ORM\Tools\Pagination\Paginator;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -23,28 +24,42 @@ class BlogController extends AbstractController
      */
     public function recipeList(Request $request): Response
     {
-        $page = $request->get("page", 1);
-        $limit = $request->get("limit", 9);
+//        $page = $request->get("page", 1);
+//        $limit = $request->get("limit", 9);
 
-        /** @var Paginator $recipes */
-        $recipes = $this->getDoctrine()->getRepository(Recipe::class)->getPaginatedRecipes(
-            $page,
-            $limit
-        );
+//        /** @var Paginator $recipes */
+//        $recipes = $this->getDoctrine()->getRepository(Recipe::class)->getPaginatedRecipes(
+//            $page,
+//            $limit
+//        );
 
-        $pages = ceil($recipes->count() / $limit);
+//        $pages = ceil($recipes->count() / $limit);
+//
+//        $range = range(
+//            max( $page - 3, 1),
+//            min( $page + 3, $pages)
+//        );
 
-        $range = range(
-            max( $page - 3, 1),
-            min( $page + 3, $pages)
-        );
+        $recipes = $this->getDoctrine()->getRepository(Recipe::class)->findAll();
+
+        $form = $this->createForm(RecipeSearchType::class);
+
+        $search = $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            // on recherche les recettes correspondantes aux mots clés
+            $recipes = $this->getDoctrine()->getRepository(Recipe::class)->search(
+                $search->get('title')->getData()
+            );
+        }
 
         return $this->render("blog/recipe_list.html.twig", [
             "recipes" => $recipes,
-            "pages" => $pages,
-            "page" => $page,
-            "limit" => $limit,
-            "range" => $range
+//            "pages" => $pages,
+//            "page" => $page,
+//            "limit" => $limit,
+//            "range" => $range
+            "form" => $form->createView()
         ]);
     }
 
