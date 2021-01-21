@@ -24,23 +24,23 @@ class BlogController extends AbstractController
      */
     public function recipeList(Request $request): Response
     {
-//        $page = $request->get("page", 1);
-//        $limit = $request->get("limit", 9);
+        $page = $request->get("page", 1);
+        $limit = $request->get("limit", 9);
 
-//        /** @var Paginator $recipes */
-//        $recipes = $this->getDoctrine()->getRepository(Recipe::class)->getPaginatedRecipes(
-//            $page,
-//            $limit
-//        );
+        /** @var Paginator $recipes */
+        $recipes = $this->getDoctrine()->getRepository(Recipe::class)->getPaginatedRecipes(
+            $page,
+            $limit
+        );
 
-//        $pages = ceil($recipes->count() / $limit);
-//
-//        $range = range(
-//            max( $page - 3, 1),
-//            min( $page + 3, $pages)
-//        );
+        $pages = ceil($recipes->count() / $limit);
 
-        $recipes = $this->getDoctrine()->getRepository(Recipe::class)->findAll();
+        $range = range(
+            max( $page - 3, 1),
+            min( $page + 3, $pages)
+        );
+
+//        $recipes = $this->getDoctrine()->getRepository(Recipe::class)->findAll();
 
         $form = $this->createForm(RecipeSearchType::class);
 
@@ -56,10 +56,10 @@ class BlogController extends AbstractController
 
         return $this->render("blog/recipe_list.html.twig", [
             "recipes" => $recipes,
-//            "pages" => $pages,
-//            "page" => $page,
-//            "limit" => $limit,
-//            "range" => $range
+            "pages" => $pages,
+            "page" => $page,
+            "limit" => $limit,
+            "range" => $range,
             "form" => $form->createView()
         ]);
     }

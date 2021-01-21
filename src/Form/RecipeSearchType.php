@@ -2,13 +2,9 @@
 
 namespace App\Form;
 
-use App\Entity\Category;
 use App\Entity\Recipe;
-use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\SearchType;
-use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -28,27 +24,6 @@ class RecipeSearchType extends AbstractType
             ->add('category', CategoryType::class, [
                 'label' => false,
                 'required' => false,
-            ])
-//            ->add('category', ChoiceType::class, [
-//                'label' => false,
-//                'required' => false,
-//                'attr' => [
-//                    'class' => 'form-control',
-//                ],
-//                'choices' => [
-//                    'Choisissez une catégorie' => [
-//                        'Entrée' => 'entrée',
-//                        'Plat' => 'plat',
-//                        'Dessert' => 'dessert',
-//                        'Cocktail & boisson' => 'cocktail & boisson',
-//                        'Sauce' => 'sauce',
-//                    ]
-//                ]
-//            ])
-            ->add('Rechercher', SubmitType::class, [
-                'attr' => [
-                    'class' => 'btn-primary'
-                ]
             ])
         ;
     }
