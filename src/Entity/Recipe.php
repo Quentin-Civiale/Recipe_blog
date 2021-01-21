@@ -24,11 +24,6 @@ class Recipe
     private $title;
 
     /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $category;
-
-    /**
      * @ORM\Column(type="text")
      */
     private $content;
@@ -37,6 +32,12 @@ class Recipe
      * @ORM\Column(type="datetime", name="published_at")
      */
     private $publishedAt;
+
+    /**
+     * @var Category
+     * @ORM\ManyToOne(targetEntity="App\Entity\Category", inversedBy="recipes", cascade={"persist"})
+     */
+    private $category;
 
     //----------------------------------------------------
 
@@ -62,16 +63,6 @@ class Recipe
         $this->title = $title;
 
         return $this;
-    }
-
-    public function getCategory()
-    {
-        return $this->category;
-    }
-
-    public function setCategory($category): void
-    {
-        $this->category = $category;
     }
 
     public function getContent(): ?string
@@ -100,5 +91,19 @@ class Recipe
 
     //--------------------------------------------------------
 
+    /**
+     * @return Category
+     */
+    public function getCategory(): ?Category
+    {
+        return $this->category;
+    }
 
+    /**
+     * @param Category $category
+     */
+    public function setCategory(Category $category): void
+    {
+        $this->category = $category;
+    }
 }
