@@ -2,6 +2,7 @@
 
 namespace App\Form;
 
+use App\Entity\Category;
 use App\Entity\Recipe;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
@@ -23,6 +24,10 @@ class RecipeSearchType extends AbstractType
                     'class' => 'form-control',
                     'placeholder' => 'Entrez un ou plusieurs mots-clés'
                 ]
+            ])
+            ->add('category', CategoryType::class, [
+                'label' => false,
+                'required' => false,
             ])
 //            ->add('category', ChoiceType::class, [
 //                'label' => false,
