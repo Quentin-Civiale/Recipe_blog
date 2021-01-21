@@ -1,11 +1,20 @@
 {% extends "base.html.twig" %}
 
 {% block body %}
-    <div class="row">
-        <div class="col-12 mb-4">
-            <h1>Les Recettes</h1>
-            <p>Retrouvez ici toutes les recettes publiées par les utilisateurs.</p>
+    <div class="col-12 mb-4">
+        <h1>Les Recettes</h1>
+        <p>Retrouvez ici toutes les recettes publiées par les utilisateurs.</p>
+    </div>
+
+    <div class="jumbotron">
+        <div class="container">
+            <div class="col-4 mb-3">
+                {{ form(form) }}
+            </div>
         </div>
+    </div>
+
+    <div class="row">
 
         {% for recipe in recipes %}
             <div class="col-4 mb-3">
@@ -23,27 +32,27 @@
             </div>
         {% endfor %}
 
-        <div class="col-12 mt-4">
-            <nav aria-label="Page navigation example">
-                <ul class="pagination">
-                    {% if page > 1 %}
-                        <li class="page-item"><a class="page-link" href="{{ path('recipe_list', { page: 1 }) }}">Première page</a></li>
-                    {% endif %}
-                    {% if page > 1 %}
-                        <li class="page-item"><a class="page-link" href="{{ path('recipe_list', { page: page - 1 }) }}">Précédent</a></li>
-                    {% endif %}
-                    {% for p in range %}
-                        <li class="page-item {{ page == p ? "active" : "" }}"><a class="page-link" href="{{ path('recipe_list', { page: p }) }}">{{ p }}</a></li>
-                    {% endfor %}
-                    {% if page < pages %}
-                        <li class="page-item"><a class="page-link" href="{{ path('recipe_list', { page: page + 1 }) }}">Suivant</a></li>
-                    {% endif %}
-                    {% if page < pages %}
-                        <li class="page-item"><a class="page-link" href="{{ path('recipe_list', { page: pages }) }}">Dernière page</a></li>
-                    {% endif %}
-                </ul>
-            </nav>
-        </div>
+{#        <div class="col-12 mt-4">#}
+{#            <nav aria-label="Page navigation example">#}
+{#                <ul class="pagination">#}
+{#                    {% if page > 1 %}#}
+{#                        <li class="page-item"><a class="page-link" href="{{ path('recipe_list', { page: 1 }) }}">Première page</a></li>#}
+{#                    {% endif %}#}
+{#                    {% if page > 1 %}#}
+{#                        <li class="page-item"><a class="page-link" href="{{ path('recipe_list', { page: page - 1 }) }}">Précédent</a></li>#}
+{#                    {% endif %}#}
+{#                    {% for p in range %}#}
+{#                        <li class="page-item {{ page == p ? "active" : "" }}"><a class="page-link" href="{{ path('recipe_list', { page: p }) }}">{{ p }}</a></li>#}
+{#                    {% endfor %}#}
+{#                    {% if page < pages %}#}
+{#                        <li class="page-item"><a class="page-link" href="{{ path('recipe_list', { page: page + 1 }) }}">Suivant</a></li>#}
+{#                    {% endif %}#}
+{#                    {% if page < pages %}#}
+{#                        <li class="page-item"><a class="page-link" href="{{ path('recipe_list', { page: pages }) }}">Dernière page</a></li>#}
+{#                    {% endif %}#}
+{#                </ul>#}
+{#            </nav>#}
+{#        </div>#}
 
     </div>
 {% endblock %}

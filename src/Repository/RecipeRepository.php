@@ -34,4 +34,21 @@ class RecipeRepository extends ServiceEntityRepository
                 ->setMaxResults($limit)
         );
     }
+
+    public function search($title = null)
+    {
+        $query = $this->createQueryBuilder('r');
+
+        if ($title !== null) {
+            $query->where('MATCH_AGAINST(r.title) AGAINST (:title boolean)>0')
+                ->setParameter('title', $title);
+        }
+
+//        if ($category !== null) {
+//            $query->where('MATCH_AGAINST(r.category) AGAINST (:category boolean)>0')
+//                ->setParameter('category', $category);
+//        }
+
+        return $query->getQuery()->getResult();
+    }
 }
