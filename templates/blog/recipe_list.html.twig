@@ -24,6 +24,9 @@
                         </div>
                     {{ form_end(form) }}
                 </div>
+                <div class="col-4 mb-3">
+                    <button class="btn btn-outline-secondary" onclick="clearSearchForm()">Réinitialiser les filtres</button>
+                </div>
             </div>
         </div>
     </div>
@@ -71,4 +74,14 @@
         </div>
 
     </div>
+
+    {# Réinitialisation des champs du formulaire de recherche #}
+    <script>
+        function clearSearchForm() {
+            var searchTitle = document.getElementById("recipe_search_title");
+            var searchCategory = document.getElementById("recipe_search_category_name");
+            searchTitle.value = "";
+            searchCategory.value = "";
+        }
+    </script>
 {% endblock %}
