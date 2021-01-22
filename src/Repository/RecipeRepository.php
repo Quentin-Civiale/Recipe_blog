@@ -35,18 +35,21 @@ class RecipeRepository extends ServiceEntityRepository
         );
     }
 
-    public function search($title = null, $name = null)
+    public function search($title = null, $category = null)
     {
         $query = $this->createQueryBuilder('r');
         if ($title !== null) {
-            $query->where('MATCH_AGAINST(r.title) AGAINST (:title boolean)>0')
+            $query->andWhere('MATCH_AGAINST(r.title) AGAINST (:title boolean)>0')
+                ->orderBy("r.publishedAt", "desc")
                 ->setParameter('title', $title);
         }
-        if ($name !== null) {
+        elseif ($category !== null) {
             $query->leftJoin('r.category', 'c')
-                ->andWhere('c.id = :id')
-                ->setParameter('id', $name);
+                ->andWhere('c.name LIKE :name')
+                ->orderBy("r.publishedAt", "desc")
+                ->setParameter('name', '%'.$category.'%');
         }
+
         return $query->getQuery()->getResult();
     }
 }
