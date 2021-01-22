@@ -43,14 +43,13 @@ class BlogController extends AbstractController
 //        $recipes = $this->getDoctrine()->getRepository(Recipe::class)->findAll();
 
         $form = $this->createForm(RecipeSearchType::class);
-
         $search = $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             // on recherche les recettes correspondantes aux mots clés
             $recipes = $this->getDoctrine()->getRepository(Recipe::class)->search(
-                $search->get('title')->getData()
-//                $search->get('category')->getData()
+                $search->get('title')->getData(),
+                $search->get('category')->getData()
             );
         }
 
