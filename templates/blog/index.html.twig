@@ -1,23 +1,21 @@
 {% extends "base.html.twig" %}
 
-{% block body %}
-    <br/>
-    <div class="row">
-        <div class="col-12 mb-4">
+{% block home %}
+
+    <div class="col-lg-10 offset-lg-1">
+        <div class="container">
             <h1>Bienvenue sur le blog de recette</h1>
             <p>Ici, vous pourrez consulter, créer différentes recettes et laisser des commentaires.</p>
             <p>Belle journée et profitez de nos succulentes recettes !</p>
         </div>
     </div>
 
-    <div class="class">
+    <div class="col-lg-10 offset-lg-1">
         <h2><strong>Les dernières recettes publiées :</strong></h2>
     </div>
 
-    <br/>
-
-{#    <div class="col-lg-8 offset-lg-2">#}
-        <div id="carouselExampleCaptions" class="carousel carousel-dark slide" data-bs-ride="carousel">
+{#    <div class="col-lg-10 offset-lg-1">#}
+        <div id="carouselExampleCaptions" class="carousel carousel-dark slide recipeCarousel" data-bs-ride="carousel">
 
             <ol class="carousel-indicators">
                 <li data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"></li>
