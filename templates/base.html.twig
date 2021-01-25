@@ -6,12 +6,14 @@
         <title>{% block title %}Blog de Recettes{% endblock %}</title>
         {% block stylesheets %}
             <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+            <link type="text/css" rel="stylesheet" href="{{ asset('css/style.css') }}" />
         {% endblock %}
     </head>
     <body>
-    <nav class="navbar sticky-top navbar-expand-lg navbar-light" style="background-color: #e3f2fd;">
+    <nav class="navbar sticky-top navbar-expand-lg navbar-light navbar-website" style="background-color: #007bff;">
         <div class="container-fluid">
-            <a class="navbar-brand" href="{{  path('index') }}">Blog de recettes</a>
+            <a class="navbar-brand" href="{{  path('index') }}"><img src="{{ asset('images/logo_v1.png') }}" class="websiteLogo" alt="websiteLogo"></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -31,15 +33,54 @@
         </div>
     </nav>
 
-    <div class="container">
-        {% block body %}
+    <div class="wrapper">
 
-        {% endblock %}
+        <div class="buttonUp">
+            <a href="#top" id="btn-to-top" title="Retour vers le haut"><i class="fas fa-chevron-up"></i></a>
+        </div>
+
+        {% block home %}{% endblock %}
+        {% block recipeList %}{% endblock %}
+        {% block createRecipe %}{% endblock %}
+        {% block readRecipe %}{% endblock %}
+        {% block updateRecipe %}{% endblock %}
+
     </div>
 
     <footer>
+        <div class="footer">
 
+            <div class="siteMap-list">
+                <div class="row">
+                    <div class="col-sm-12 col-md-12 py-5">
+                        <div class="">
+                            <a class="menuPages-link col-4 mb-3" href="{{ path('index') }}" title="Accueil">
+                                <i class="bi bi-house-door-fill pages_icon"></i>
+                            </a>
+                            <a class="menuPages-link col-4 mb-3" href="{{ path('recipe_list') }}" title="Les Recettes">
+                                <i class="bi bi-egg-fried pages_icon"></i>
+                            </a>
+                            <a class="menuPages-link col-4 mb-3" href="{{ path('blog_create') }}" title="Écrire une nouvelle recette">
+                                <i class="bi bi-file-earmark-plus-fill pages_icon"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <hr/>
+
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center">
+                <div class="footer_info">&copy; <span id="year"></span> quentin-civiale.fr - Tous droits réservés • Design et développement par
+                    <a href="http://quentin-civiale.fr/" class="copyright" title="Quentin Civiale - Développeur Web Junior" target="_blank" rel="author">Quentin Civiale</a>
+                </div>
+            </div>
+        </div>
     </footer>
+
+    <script>
+        document.getElementById("year").innerHTML = new Date().getFullYear();
+    </script>
 
     {% block javascripts %}
         <!-- Optional JavaScript; choose one of the two! -->

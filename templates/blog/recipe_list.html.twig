@@ -1,16 +1,20 @@
 {% extends "base.html.twig" %}
 
-{% block body %}
-    <div class="col-12 mb-4">
-        <h1>Les Recettes</h1>
-        <p>Retrouvez ici toutes les recettes publiées par les utilisateurs.</p>
-    </div>
+{% block recipeList %}
 
-    <div class="jumbotron">
+    <div class="col-lg-10 offset-lg-1">
         <div class="container">
-            <div class="row">
-                <div class="col-8 mb-3">
-                    {{ form_start(form) }}
+            <h1>Les Recettes</h1>
+            <p>Retrouvez ici toutes les recettes publiées par les utilisateurs.</p>
+        </div>
+
+        <hr/>
+
+        <div class="jumbotron">
+            <div class="container">
+                <div class="row">
+                    <div class="col-8 mb-3">
+                        {{ form_start(form) }}
                         <div class="row">
                             <div class="col-5">
                                 {{ form_row(form.title) }}
@@ -19,69 +23,74 @@
                                 {{ form_row(form.category) }}
                             </div>
                             <div class="col-2">
-                                <button class="btn btn-primary" type="submit">Rechercher</button>
+                                <button class="btn btn-search" type="submit">Rechercher</button>
                             </div>
                         </div>
-                    {{ form_end(form) }}
+                        {{ form_end(form) }}
+                    </div>
+                    <div class="col-4 mb-3">
+                        <button class="btn btn-clearSearch" onclick="clearSearchForm()">Réinitialiser les filtres</button>
+                    </div>
                 </div>
+            </div>
+        </div>
+
+        <hr/>
+
+        <div class="row">
+
+            {% for recipe in recipes %}
                 <div class="col-4 mb-3">
-                    <button class="btn btn-outline-secondary" onclick="clearSearchForm()">Réinitialiser les filtres</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <hr/>
-
-    <div class="row">
-
-        {% for recipe in recipes %}
-            <div class="col-4 mb-3">
-                <div class="card">
-                    <div class="card-header">{{ recipe.title }} - {{ recipe.category.name|capitalize }}</div>
-                    <img class="card-img-top" src="https://picsum.photos/400/300" alt="{{ recipe.title }}">
-                    <div class="card-body d-flex flex-column justify-content-between">
-                        <small class="text-muted">Publiée le {{ recipe.publishedAt|date("d/m/Y") }}</small>
-                    </div>
-                    <div class="card-footer d-flex justify-content-between">
-                        <a href="{{ path('blog_read', { id: recipe.id }) }}">Lire la suite</a>
-                        <a href="{{ path('blog_update', { id: recipe.id }) }}">Modifier</a>
+                    <div class="card">
+                        <div class="card-header d-flex justify-content-between">
+                            <span class="recipeList_titleCard">{{ recipe.title }}</span>
+                            <span class="recipeList_categoryCard">{{ recipe.category.name|capitalize }}</span>
+                        </div>
+                        <img class="card-img-top" src="https://picsum.photos/400/300" alt="{{ recipe.title }}">
+                        <div class="card-body d-flex flex-column justify-content-between">
+                            <small class="recipeList_publishedAtCard">Publiée le {{ recipe.publishedAt|date("d/m/Y") }}</small>
+                        </div>
+                        <div class="card-footer d-flex justify-content-between">
+                            <a class="recipeList_linkCard" href="{{ path('blog_read', { id: recipe.id }) }}">Lire la suite</a>
+                            <a class="recipeList_linkCard" href="{{ path('blog_update', { id: recipe.id }) }}">Modifier</a>
+                        </div>
                     </div>
                 </div>
-            </div>
-        {% endfor %}
+            {% endfor %}
 
-        <div class="col-12 mt-4">
-            <nav aria-label="Page navigation example">
-                <ul class="pagination">
-                    {% if page > 1 %}
-                        <li class="page-item"><a class="page-link" href="{{ path('recipe_list', { page: 1 }) }}">Première page</a></li>
-                    {% endif %}
-                    {% if page > 1 %}
-                        <li class="page-item"><a class="page-link" href="{{ path('recipe_list', { page: page - 1 }) }}">Précédent</a></li>
-                    {% endif %}
-                    {% for p in range %}
-                        <li class="page-item {{ page == p ? "active" : "" }}"><a class="page-link" href="{{ path('recipe_list', { page: p }) }}">{{ p }}</a></li>
-                    {% endfor %}
-                    {% if page < pages %}
-                        <li class="page-item"><a class="page-link" href="{{ path('recipe_list', { page: page + 1 }) }}">Suivant</a></li>
-                    {% endif %}
-                    {% if page < pages %}
-                        <li class="page-item"><a class="page-link" href="{{ path('recipe_list', { page: pages }) }}">Dernière page</a></li>
-                    {% endif %}
-                </ul>
-            </nav>
+            <div class="col-12 mt-4">
+                <nav aria-label="Page navigation example">
+                    <ul class="pagination">
+                        {% if page > 1 %}
+                            <li class="page-item"><a class="page-link" href="{{ path('recipe_list', { page: 1 }) }}">Première page</a></li>
+                        {% endif %}
+                        {% if page > 1 %}
+                            <li class="page-item"><a class="page-link" href="{{ path('recipe_list', { page: page - 1 }) }}">Précédent</a></li>
+                        {% endif %}
+                        {% for p in range %}
+                            <li class="page-item {{ page == p ? "active" : "" }}"><a class="page-link" href="{{ path('recipe_list', { page: p }) }}">{{ p }}</a></li>
+                        {% endfor %}
+                        {% if page < pages %}
+                            <li class="page-item"><a class="page-link" href="{{ path('recipe_list', { page: page + 1 }) }}">Suivant</a></li>
+                        {% endif %}
+                        {% if page < pages %}
+                            <li class="page-item"><a class="page-link" href="{{ path('recipe_list', { page: pages }) }}">Dernière page</a></li>
+                        {% endif %}
+                    </ul>
+                </nav>
+            </div>
+
         </div>
 
+        {# Réinitialisation des champs du formulaire de recherche #}
+        <script>
+            function clearSearchForm() {
+                var searchTitle = document.getElementById("recipe_search_title");
+                var searchCategory = document.getElementById("recipe_search_category_name");
+                searchTitle.value = "";
+                searchCategory.value = "";
+            }
+        </script>
     </div>
 
-    {# Réinitialisation des champs du formulaire de recherche #}
-    <script>
-        function clearSearchForm() {
-            var searchTitle = document.getElementById("recipe_search_title");
-            var searchCategory = document.getElementById("recipe_search_category_name");
-            searchTitle.value = "";
-            searchCategory.value = "";
-        }
-    </script>
 {% endblock %}

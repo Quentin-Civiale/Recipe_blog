@@ -1,12 +1,24 @@
 {% extends 'base.html.twig' %}
 
-{% block body %}
-    <h1>Modifier la recette</h1>
+{% block updateRecipe %}
+    <div class="col-lg-10 offset-lg-1">
+        <div class="container">
+            <h1>Modifier la recette</h1>
+        </div>
+    </div>
 
-    {{ form_start(form) }}
-        {{ form_row(form.title) }}
-        {{ form_row(form.category) }}
-        {{ form_row(form.content) }}
-        <button type="submit">Modifier</button>
-    {{ form_end(form) }}
+    <br/>
+
+    <div class="col-lg-8 offset-lg-2">
+        <div class="container">
+            {{ form_start(form) }}
+                {{ form_row(form.title) }}
+                {{ form_row(form.category) }}
+                {{ form_row(form.content) }}
+                <button type="submit">Modifier</button>
+            {{ form_end(form) }}
+        </div>
+    </div>
+
+    <br/>
 {% endblock %}
