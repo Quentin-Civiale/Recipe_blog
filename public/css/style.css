@@ -1,0 +1,277 @@
+.color {
+    --blue: #007bff;
+    --indigo: #6610f2;
+    --purple: #6f42c1;
+    --pink: #e83e8c;
+    --red: #dc3545;
+    --orange: #fd7e14;
+    --yellow: #ffc107;
+    --green: #28a745;
+    --teal: #20c997;
+    --cyan: #17a2b8;
+    --white: #fff;
+    --gray: #6c757d;
+    --gray-dark: #343a40;
+    --primary: #007bff;
+    --secondary: #6c757d;
+    --success: #28a745;
+    --info: #17a2b8;
+    --warning: #ffc107;
+    --danger: #dc3545;
+    --light: #f8f9fa;
+    --dark: #343a40;
+
+    /*PANTONE - Color of the Year*/
+    --2017: #86af49;
+}
+
+/*--------------------------------------------------------------------------------------------------------------------*/
+/* Généralités */
+
+body {
+    color: var(--main-font-color);
+}
+
+/* Variable CSS des couleurs */
+/*:root {*/
+/*    --main-color-one: #007bff !important;*/
+/*    --main-color-two: #17a2b8 !important;*/
+/*    --main-color-three: #6c757d !important;*/
+/*    --main-font-color: #fff !important;*/
+/*}*/
+
+/*:root {*/
+/*    --main-color-one: #dc3545 !important;*/
+/*    --main-color-two: #ffc107 !important;*/
+/*    --main-color-three: #6c757d !important;*/
+/*    --main-font-color: #ffffff !important;*/
+/*}*/
+
+:root {
+    --main-color-one: #e6b3cc !important;
+    --main-color-two: #003399 !important;
+    --main-color-three: #6c757d !important;
+    --main-color-four: #993366 !important;
+    --main-font-color: #ffffff !important;
+}
+
+/* Fond coloré */
+.wrapper {
+    width: 100% !important;
+    height: auto !important;
+    background-color: var(--main-color-one) !important;
+}
+
+/*--------------------------------------------------------------------------------------------------------------------*/
+/* HomePage */
+
+/* Navbar */
+.websiteLogo {
+    max-height: 55px !important;
+}
+
+.navbar-website {
+    background-color: var(--main-font-color) !important;
+    border-bottom: var(--main-color-four) solid 1px !important;
+    box-shadow: 0 3px 2px 0 rgba(0,0,0,0.25) !important;
+}
+.navbar-brand {
+    color: var(--main-color-one) !important;
+}
+/* Boutons de navigation du menu */
+.nav-item {
+    margin: auto 10px !important;
+}
+.navbar-light .navbar-nav .nav-link {
+    color: var(--main-color-one) !important;
+    border: 3px solid var(--main-font-color) !important;
+    border-radius: 30px !important;
+}
+.navbar-light .navbar-nav .nav-link.active {
+    color: var(--main-color-two) !important;
+    background-color: var(--main-font-color) !important;
+    border: 3px solid var(--main-color-two) !important;
+    border-radius: 30px !important;
+}
+.navbar-light .navbar-nav .nav-link:hover {
+    color: var(--main-color-two) !important;
+    background-color: var(--main-font-color) !important;
+    border: 3px solid var(--main-color-two) !important;
+    border-radius: 30px !important;
+}
+
+/* Caroussel */
+.recipeCarousel {
+
+}
+
+/* Bouton de retour vers le haut de la page */
+#btn-to-top {
+    background: var(--main-color-one) !important;
+    color: var(--main-font-color) !important;
+    font-size: 20px;
+    height: 45px;
+    width: 45px;
+    line-height: 40px;
+    border-radius: 50%;
+    position: fixed;
+    bottom: 50px;
+    right: 30px;
+    text-align: center;
+    z-index: 9999;
+    -moz-transition: background 0.8s ease;
+    -o-transition: background 0.8s ease;
+    -webkit-transition: background 0.8s ease;
+    transition: background-color .4s, opacity .5s, visibility .5s;
+    opacity: 0;
+    visibility: hidden;
+    display: inline-block;
+    margin: 30px;
+}
+
+#btn-to-top:hover {
+    background-color: var(--main-font-color) !important;
+    cursor: pointer !important;
+    color: var(--main-color-one) !important;
+    border: 2px solid var(--main-color-one) !important;
+}
+
+#btn-to-top:active {
+    background-color: #666 !important;
+}
+
+#btn-to-top.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+/*--------------------------------------------------------------------------------------------------------------------*/
+/* RecipeListPage */
+
+/* Design du formulaire de recherche */
+.btn-search {
+    border-radius: 30px !important;
+    color: var(--main-font-color) !important;
+    background-color: var(--main-color-one) !important;
+    border-color: 1px solid var(--main-font-color) !important;
+}
+.btn-search:hover {
+    background-color: var(--main-color-four) !important;
+    border-color: 1px solid var(--main-font-color) !important;
+}
+.btn-clearSearch {
+    border-radius: 30px !important;
+    color: var(--main-color-one) !important;
+    background-color: var(--main-font-color) !important;
+}
+.btn-clearSearch:hover {
+    background-color: var(--main-color-one) !important;
+    color: var(--main-font-color) !important;
+    border-color: 1px solid var(--main-font-color) !important;
+}
+
+/* Design des cards de recettes */
+.card {
+    border-radius: 30px !important;
+    border: 3px solid var(--main-color-four) !important;
+    background-color: var(--main-color-four) !important;
+    overflow: hidden !important;
+}
+.card:hover {
+    border: 3px solid var(--main-font-color) !important;
+}
+.card-header {
+
+}
+.card-body {
+    background-color: var(--main-color-one) !important;
+}
+.recipeList_titleCard {
+    color: var(--main-font-color) !important;
+    font-size: 25px !important;
+}
+.recipeList_categoryCard {
+    color: var(--main-font-color) !important;
+    font-size: 18px !important;
+    font-style: italic !important;
+}
+.recipeList_publishedAtCard {
+    color: var(--main-font-color) !important;
+}
+.recipeList_linkCard {
+    color: var(--main-font-color) !important;
+    text-decoration: none !important;
+}
+.recipeList_linkCard:hover {
+    color: var(--main-color-three) !important;
+    text-decoration: none !important;
+}
+
+/* Pagination */
+.page-item.active .page-link {
+    z-index: 3 !important;
+    color: #fff !important;
+    background-color: var(--main-color-four) !important;
+    border-color: var(--main-color-four) !important;
+}
+.page-link {
+    color: var(--main-color-one) !important;
+}
+
+/*--------------------------------------------------------------------------------------------------------------------*/
+/* RecipeCreatePage */
+
+/*--------------------------------------------------------------------------------------------------------------------*/
+/* Footer */
+
+.footer {
+    /*background-image: url("../images/cooking_pattern2.jpg") !important;*/
+    background-color: var(--main-color-four) !important;
+    background-attachment: fixed !important;
+}
+.siteMap-list {
+    margin: auto !important;
+    width: 100% !important;
+    text-align: center !important;
+    justify-content: center !important;
+    align-items: center !important;
+}
+.menuPages-link {
+    text-decoration: none !important;
+    color: var(--main-font-color) !important;
+    margin-right: 35px !important;
+}
+
+/* Icônes des pages */
+.pages_icon {
+    color: var(--main-font-color) !important;
+    font-size: 52px !important;
+}
+.pages_icon:hover {
+    color: var(--main-color-one) !important;
+    font-size: 52px !important;
+    transform: scale(1.75) !important;
+    transition: background-color .5s, transform .5s ease-out !important;
+}
+
+/* Infos de signature */
+.footer_info {
+    font-size: 18px !important;
+    color: var(--main-color-one) !important;
+}
+
+/* Année du copyright */
+#current_year {
+    margin: 20px !important;
+    width: 200px !important;
+    height: 200px !important;
+    position: relative !important;
+}
+.copyright {
+    text-decoration: none !important;
+    font-weight: bold !important;
+    color: var(--main-font-color) !important;
+}
+.copyright:hover {
+    color: var(--main-color-two) !important;
+}
