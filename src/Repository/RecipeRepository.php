@@ -20,6 +20,22 @@ class RecipeRepository extends ServiceEntityRepository
         parent::__construct($registry, Recipe::class);
     }
 
+    private function findAllQuery()
+    {
+        return $this->createQueryBuilder('r');
+    }
+
+    public function findLatestRecipe(): array
+    {
+        $query = $this->findAllQuery();
+
+        // sélection des 5 dernières annonces créées
+        return $query->orderBy('r.id', 'DESC')
+            ->setMaxResults(5)
+            ->getQuery()
+            ->getResult();
+    }
+
     /**
      * @param int $page
      * @param int $limit
