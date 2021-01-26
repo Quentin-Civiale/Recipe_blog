@@ -34,6 +34,12 @@ class Recipe
     private $publishedAt;
 
     /**
+     * @var string|null
+     * @ORM\Column
+     */
+    private $image;
+
+    /**
      * @var Category
      * @ORM\ManyToOne(targetEntity="App\Entity\Category", inversedBy="recipes", cascade={"persist"})
      */
@@ -88,6 +94,24 @@ class Recipe
 
         return $this;
     }
+
+    /**
+     * @return string|null
+     */
+    public function getImage(): ?string
+    {
+        return $this->image;
+    }
+
+    /**
+     * @param string|null $image
+     */
+    public function setImage(?string $image): void
+    {
+        $this->image = $image;
+    }
+
+
 
     //--------------------------------------------------------
 

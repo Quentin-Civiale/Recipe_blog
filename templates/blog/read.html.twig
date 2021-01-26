@@ -5,7 +5,7 @@
         <div class="col-lg-8 offset-lg-2">
             <h1>{{ recipe.title }}</h1>
             <h3>{{ recipe.category.name|capitalize }}</h3>
-            <img class="card-img-top" src="https://picsum.photos/200/100" alt="{{ recipe.title }}">
+            <img class="card-img-top" src="{{ asset(recipe.image) }}" alt="{{ recipe.title }}">
             <small>Publié le {{ recipe.publishedAt|date("d/m/Y") }}</small>
             <p>{{ recipe.content }}</p>
         </div>
