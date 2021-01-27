@@ -56,15 +56,15 @@ class RecipeRepository extends ServiceEntityRepository
         $query = $this->createQueryBuilder('r');
         if ($title !== null) {
             $query->andWhere('MATCH_AGAINST(r.title) AGAINST (:title boolean)>0')
-                ->orderBy("r.publishedAt", "desc")
                 ->setParameter('title', $title);
         }
-        elseif ($category !== null) {
+        if ($category !== null) {
             $query->leftJoin('r.category', 'c')
                 ->andWhere('c.name LIKE :name')
-                ->orderBy("r.publishedAt", "desc")
                 ->setParameter('name', '%'.$category.'%');
         }
+
+        $query->orderBy("r.publishedAt", "desc");
 
         return $query->getQuery()->getResult();
     }
