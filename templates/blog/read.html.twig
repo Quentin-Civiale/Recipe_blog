@@ -1,15 +1,69 @@
 {% extends "base.html.twig" %}
 
 {% block readRecipe %}
-    <div class="row">
+    <br/>
+
         <div class="col-lg-8 offset-lg-2">
-            <h1>{{ recipe.title }}</h1>
-            <h3>{{ recipe.category.name|capitalize }}</h3>
-            <img class="card-img-top" src="{{ asset(recipe.image) }}" alt="{{ recipe.title }}">
-            <small>Publié le {{ recipe.publishedAt|date("d/m/Y") }}</small>
-            <p>{{ recipe.content }}</p>
+            <div class="row">
+                <h1>{{ recipe.category.name|capitalize }} - <strong>{{ recipe.title }}</strong></h1>
+                <small>Publié le {{ recipe.publishedAt|date("d/m/Y") }}</small>
+            </div>
+            <br/>
+            <img class="card-img img-fluid img-thumbnail rounded recipe-img" src="{{ asset(recipe.image) }}" alt="{{ recipe.title }}">
+            <br/>
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="card card-read-recipe rounded">
+                        <br/>
+                        <div class="col-lg-10 offset-lg-1">
+                            <h3><i class="bi bi-hourglass-split"></i> Temps de préparation :</h3>
+                            <p>20 minutes</p>
+                        </div>
+                    </div>
+                    <br/>
+                    <div class="card card-read-recipe rounded">
+                        <br/>
+                        <div class="col-lg-10 offset-lg-1">
+                            <h3><i class="bi bi-hourglass-split"></i> Temps de cuisson :</h3>
+                            <p>10 minutes</p>
+                        </div>
+                    </div>
+                    <br/>
+                    <div class="card card-read-recipe rounded">
+                        <br/>
+                        <div class="col-lg-10 offset-lg-1">
+                            <h3><i class="bi bi-cart3"></i> Listes des ingrédients :</h3>
+                            <p>- Ingrédient N°1</p>
+                            <p>- Ingrédient N°2</p>
+                            <p>- Ingrédient N°3</p>
+                            <p>- Ingrédient N°4</p>
+                            <p>- Ingrédient N°5</p>
+                            <p>- Ingrédient N°6</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-8">
+                    <div class="card card-read-recipe rounded">
+                        <br/>
+                        <div class="col-lg-10 offset-lg-1">
+                            <h3>Préparation :</h3>
+                            <p class="read-content">{{ recipe.content }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br/>
+            <div class="card card-read-recipe">
+                <div class="col-lg-10 offset-lg-1">
+                    <h3>Notes</h3>
+                    <p>-------------------------------------------------------------------------------------------------
+                    ----------------------------------------------------------------------------------------------------
+                    ------------------------------------------------------------------------------------------------</p>
+                </div>
+            </div>
         </div>
-    </div>
+
+    <br/>
 {% endblock %}
 
 

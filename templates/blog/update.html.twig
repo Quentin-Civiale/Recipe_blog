@@ -1,25 +1,56 @@
 {% extends 'base.html.twig' %}
 
 {% block updateRecipe %}
+
+    <br/>
+
     <div class="col-lg-10 offset-lg-1">
         <div class="container">
             <h1>Modifier la recette</h1>
         </div>
     </div>
 
+{#    <br/>#}
+
+{#    <div class="col-lg-8 offset-lg-2">#}
+{#        <div class="container">#}
+{#            {{ form_start(form) }}#}
+{#                {{ form_row(form.title) }}#}
+{#                {{ form_row(form.category) }}#}
+{#                {{ form_row(form.file) }}#}
+{#                {{ form_row(form.content) }}#}
+{#                <button class="btn btn-modify" type="submit">Modifier</button>#}
+{#            {{ form_end(form) }}#}
+{#        </div>#}
+{#    </div>#}
+
     <br/>
 
     <div class="col-lg-8 offset-lg-2">
         <div class="container">
             {{ form_start(form) }}
+            <div class="mb-4">
                 {{ form_row(form.title) }}
-                {{ form_row(form.category) }}
-                {{ form_row(form.file) }}
+            </div>
+            <div class="row">
+                <div class="col-6">
+                    {{ form_widget(form.category) }}
+                </div>
+                <div class="col-6">
+                    {{ form_widget(form.file) }}
+                </div>
+            </div>
+            <div class="mb-4">
                 {{ form_row(form.content) }}
-                <button type="submit">Modifier</button>
+            </div>
+            <div>
+                <button class="btn btn-modify" type="submit">Modifier</button>
+            </div>
             {{ form_end(form) }}
         </div>
     </div>
+
+    <br/>
 
     <br/>
 {% endblock %}

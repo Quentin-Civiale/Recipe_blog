@@ -2,6 +2,8 @@
 
 {% block home %}
 
+    <br/>
+
     <div class="col-lg-10 offset-lg-1">
         <div class="container">
             <h1>Bienvenue sur le blog de recette</h1>
@@ -14,47 +16,45 @@
         <h2><strong>Les dernières recettes publiées :</strong></h2>
     </div>
 
-{#    <div class="col-lg-10 offset-lg-1">#}
-        <div id="carouselExampleCaptions" class="carousel carousel-dark slide recipeCarousel" data-bs-ride="carousel">
+    <div id="carouselExampleCaptions" class="carousel carousel-dark slide recipeCarousel" data-bs-ride="carousel">
 
-            <ol class="carousel-indicators">
-                <li data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"></li>
-                <li data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"></li>
-                <li data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"></li>
-                <li data-bs-target="#carouselExampleCaptions" data-bs-slide-to="3"></li>
-                <li data-bs-target="#carouselExampleCaptions" data-bs-slide-to="4"></li>
-            </ol>
+        <ol class="carousel-indicators">
+            <li data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"></li>
+            <li data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"></li>
+            <li data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"></li>
+            <li data-bs-target="#carouselExampleCaptions" data-bs-slide-to="3"></li>
+            <li data-bs-target="#carouselExampleCaptions" data-bs-slide-to="4"></li>
+        </ol>
 
-            <div class="carousel-inner">
-                {% for recipe in recipes %}
-                {% if loop.index == 1 %}
-                <div class="carousel-item active">
-                    {% else %}
-                    <div class="carousel-item">
-                        {% endif %}
-                        <img class="card-img-top" src="https://picsum.photos/200/100" alt="{{ recipe.title }}">
-                        <div class="carousel-caption d-none d-md-block">
-                            <h5>{{ recipe.category.name|capitalize }}</h5>
-                            <h4>{{ recipe.title }}</h4>
-                            <p>
-                                <a href="{{ path('blog_read', { id: recipe.id }) }}">Lire la suite</a>
-                            </p>
-                        </div>
+        <div class="carousel-inner">
+            {% for recipe in recipes %}
+            {% if loop.index == 1 %}
+            <div class="carousel-item active">
+                {% else %}
+                <div class="carousel-item">
+                    {% endif %}
+                    <img class="card-img img-carousel" src="https://picsum.photos/200/100" alt="{{ recipe.title }}">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5>{{ recipe.category.name|capitalize }}</h5>
+                        <h4>{{ recipe.title }}</h4>
+                        <p>
+                            <a href="{{ path('blog_read', { id: recipe.id }) }}">Lire la suite</a>
+                        </p>
                     </div>
-                    {% endfor %}
                 </div>
-                <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-bs-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Précédent</span>
-                </a>
-                <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-bs-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Suivant</span>
-                </a>
+                {% endfor %}
             </div>
-
+            <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Précédent</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Suivant</span>
+            </a>
         </div>
-{#    </div>#}
+
+    </div>
 
 {% endblock %}
 

@@ -18,13 +18,24 @@ class RecipeType extends AbstractType
     {
         $builder
             ->add('title', TextType::class, [
-                "label" => "Titre :"
+                "label" => "Titre :",
+                "attr" => [
+                    "class" => "form-control",
+                    "type" => "text"
+                ],
             ])
             ->add('category', CategoryType::class, [
-                "label" => false
+                "label" => false,
+                "attr" => [
+                    "class" => ""
+                ],
             ])
             ->add('content', TextareaType::class, [
-                "label" => "Contenu :"
+                "label" => "Contenu :",
+                "attr" => [
+                    "class" => "form-control",
+                    "white-space" => "pre-wrap"
+                ],
             ])
             ->add('file', FileType::class, [
                 "label" => "Choisir une photo pour illustrer la recette :",
@@ -35,7 +46,10 @@ class RecipeType extends AbstractType
                     new NotNull([
                         "groups" => "create"
                     ])
-                ]
+                ],
+                "attr" => [
+                    "class" => "form-control"
+                ],
             ])
         ;
     }

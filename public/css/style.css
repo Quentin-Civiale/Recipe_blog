@@ -104,6 +104,9 @@ body {
 .recipeCarousel {
 
 }
+.img-carousel {
+    max-height: 400px !important;
+}
 
 /* Bouton de retour vers le haut de la page */
 #btn-to-top {
@@ -148,6 +151,12 @@ body {
 /*--------------------------------------------------------------------------------------------------------------------*/
 /* RecipeListPage */
 
+/* Recherche de recettes */
+
+#recipe_search_category_name {
+    min-height: 38px !important;
+}
+
 /* Design du formulaire de recherche */
 .btn-search {
     border-radius: 30px !important;
@@ -171,13 +180,13 @@ body {
 }
 
 /* Design des cards de recettes */
-.card {
+.card-recipeList {
     border-radius: 30px !important;
     border: 3px solid var(--main-color-four) !important;
     background-color: var(--main-color-four) !important;
     overflow: hidden !important;
 }
-.card:hover {
+.card-recipeList:hover {
     border: 3px solid var(--main-font-color) !important;
 }
 .card-header {
@@ -219,7 +228,52 @@ body {
 }
 
 /*--------------------------------------------------------------------------------------------------------------------*/
-/* RecipeCreatePage */
+/* RecipeCreate and Update Page */
+
+textarea#recipe_content {
+    min-height: 300px !important;
+    width: 100% !important;
+}
+
+#recipe_category_name {
+    width: 200px !important;
+    min-height: 38px !important;
+}
+
+.btn-publish, .btn-modify {
+    border-radius: 30px !important;
+    color: var(--main-font-color) !important;
+    background-color: var(--main-color-four) !important;
+    border-color: 2px solid var(--main-font-color) !important;
+}
+.btn-publish:hover, .btn-modify:hover {
+    border-radius: 30px !important;
+    color: var(--main-font-color) !important;
+    background-color: var(--main-color-one) !important;
+    border-color: 2px solid var(--main-color-four) !important;
+}
+
+/*--------------------------------------------------------------------------------------------------------------------*/
+/* RecipeReadPage */
+
+.recipe-img {
+    height: 500px !important;
+    width: 700px !important;
+    display: block !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
+
+.card-read-recipe {
+    border: 2px solid var(--main-font-color) !important;
+    background-color: var(--main-color-four) !important;
+    overflow: hidden !important;
+}
+
+p.read-content {
+    white-space: pre-wrap !important;
+    text-align: justify !important;
+}
 
 /*--------------------------------------------------------------------------------------------------------------------*/
 /* Footer */
