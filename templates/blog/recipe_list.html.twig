@@ -2,6 +2,8 @@
 
 {% block recipeList %}
 
+    <br/>
+
     <div class="col-lg-10 offset-lg-1">
         <div class="container">
             <h1>Les Recettes</h1>
@@ -41,7 +43,7 @@
 
             {% for recipe in recipes %}
                 <div class="col-4 mb-3">
-                    <div class="card">
+                    <div class="card card-recipeList">
                         <div class="card-header d-flex justify-content-between">
                             <span class="recipeList_titleCard">{{ recipe.title }}</span>
                             <span class="recipeList_categoryCard">{{ recipe.category.name|capitalize }}</span>

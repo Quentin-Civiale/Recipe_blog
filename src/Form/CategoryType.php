@@ -15,7 +15,7 @@ class CategoryType extends AbstractType
     {
         $builder
             ->add('name', ChoiceType::class, [
-                "label" => "Catégorie de la recette :",
+                "label" => "Catégorie de la recette : ",
                 'required' => true,
                 'data' => '-- Choisissez une catégorie --',
                 'choices' => [
