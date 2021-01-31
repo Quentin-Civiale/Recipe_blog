@@ -40,8 +40,21 @@
                     {{ form_widget(form.file) }}
                 </div>
             </div>
+            <br/>
+            <div class="row">
+                <div class="col-6">
+                    {{ form_row(form.preparationTime) }}
+                </div>
+                <div class="col-6">
+                    {{ form_row(form.cookingTime) }}
+                </div>
+            </div>
+            <br/>
             <div class="mb-4">
                 {{ form_row(form.content) }}
+            </div>
+            <div class="mb-4">
+                {{ form_row(form.note) }}
             </div>
             <div>
                 <button class="btn btn-modify" type="submit">Modifier</button>

@@ -7,6 +7,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\TimeType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\Image;
@@ -50,6 +51,21 @@ class RecipeType extends AbstractType
                 "attr" => [
                     "class" => "form-control"
                 ],
+            ])
+            ->add('note', TextareaType::class, [
+                "label" => "Notes :",
+                "attr" => [
+                    "class" => "form-control",
+                    "white-space" => "pre-wrap"
+                ],
+            ])
+            ->add('preparationTime', TimeType::class, [
+                "label" => "Temps de préparation :",
+                "required" => false
+            ])
+            ->add('cookingTime', TimeType::class, [
+                "label" => "Temps de cuisson :",
+                "required" => false
             ])
         ;
     }
