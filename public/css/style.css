@@ -47,6 +47,16 @@ body {
 /*    --main-font-color: #ffffff !important;*/
 /*}*/
 
+/* Couleur v2*/
+/*:root {*/
+/*    --main-color-one: #FFCCBC !important;*/
+/*    --main-color-two: #FF8A65 !important;*/
+/*    --main-color-three: #6c757d !important;*/
+/*    --main-color-four: #FF8A65 !important;*/
+/*    --main-font-color: #ffffff !important;*/
+/*}*/
+
+/* Couleur v1*/
 :root {
     --main-color-one: #e6b3cc !important;
     --main-color-two: #003399 !important;
@@ -60,6 +70,11 @@ body {
     width: 100% !important;
     height: auto !important;
     background-color: var(--main-color-one) !important;
+}
+
+/* Texte en italique */
+.italic-text {
+    font-style: italic !important;
 }
 
 /*--------------------------------------------------------------------------------------------------------------------*/
