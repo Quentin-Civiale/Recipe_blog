@@ -40,6 +40,21 @@ class Recipe
     private $image;
 
     /**
+     * @ORM\Column(type="text")
+     */
+    private $note;
+
+    /**
+     * @ORM\Column(type="time")
+     */
+    private $preparationTime;
+
+    /**
+     * @ORM\Column(type="time")
+     */
+    private $cookingTime;
+
+    /**
      * @var Category
      * @ORM\ManyToOne(targetEntity="App\Entity\Category", inversedBy="recipes", cascade={"persist"})
      */
@@ -109,6 +124,50 @@ class Recipe
     public function setImage(?string $image): void
     {
         $this->image = $image;
+    }
+
+    public function getNote(): ?string
+    {
+        return $this->note;
+    }
+
+    public function setNote(string $note): self
+    {
+        $this->note = $note;
+
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPreparationTime()
+    {
+        return $this->preparationTime;
+    }
+
+    /**
+     * @param mixed $preparationTime
+     */
+    public function setPreparationTime($preparationTime): void
+    {
+        $this->preparationTime = $preparationTime;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCookingTime()
+    {
+        return $this->cookingTime;
+    }
+
+    /**
+     * @param mixed $cookingTime
+     */
+    public function setCookingTime($cookingTime): void
+    {
+        $this->cookingTime = $cookingTime;
     }
 
 
