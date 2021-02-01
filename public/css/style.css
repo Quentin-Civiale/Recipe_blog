@@ -48,22 +48,22 @@ body {
 /*}*/
 
 /* Couleur v2*/
-/*:root {*/
-/*    --main-color-one: #FFCCBC !important;*/
-/*    --main-color-two: #FF8A65 !important;*/
-/*    --main-color-three: #6c757d !important;*/
-/*    --main-color-four: #FF8A65 !important;*/
-/*    --main-font-color: #ffffff !important;*/
-/*}*/
-
-/* Couleur v1*/
 :root {
-    --main-color-one: #e6b3cc !important;
-    --main-color-two: #003399 !important;
+    --main-color-one: #FFCCBC !important;
+    --main-color-two: #FF8A65 !important;
     --main-color-three: #6c757d !important;
-    --main-color-four: #993366 !important;
+    --main-color-four: #FF8A65 !important;
     --main-font-color: #ffffff !important;
 }
+
+/* Couleur v1*/
+/*:root {*/
+/*    --main-color-one: #e6b3cc !important;*/
+/*    --main-color-two: #003399 !important;*/
+/*    --main-color-three: #6c757d !important;*/
+/*    --main-color-four: #993366 !important;*/
+/*    --main-font-color: #ffffff !important;*/
+/*}*/
 
 /* Fond coloré */
 .wrapper {
@@ -168,20 +168,35 @@ body {
 
 /* Recherche de recettes */
 
-#recipe_search_category_name {
-    min-height: 38px !important;
+#recipe_search_title {
+    color: var(--main-color-two) !important;
+    background-color: var(--main-font-color) !important;
+    border-color: 2px solid var(--main-color-two) !important;
 }
 
-/* Design du formulaire de recherche */
+/* Bouton de choix de la catégorie de la recherche */
+#recipe_search_category {
+    margin-top: 8px !important;
+}
+#recipe_search_category_name {
+    min-height: 38px !important;
+    max-width: 168px !important;
+    color: var(--main-color-two) !important;
+    background-color: var(--main-font-color) !important;
+    /*border-color: 2px solid var(--main-color-two) !important;*/
+}
+
+/* Design du bouton de recherche et de réinitialisation */
 .btn-search {
     border-radius: 30px !important;
     color: var(--main-font-color) !important;
-    background-color: var(--main-color-one) !important;
-    border-color: 1px solid var(--main-font-color) !important;
+    background-color: var(--main-color-two) !important;
+    border-color: 2px solid var(--main-font-color) !important;
 }
 .btn-search:hover {
-    background-color: var(--main-color-four) !important;
-    border-color: 1px solid var(--main-font-color) !important;
+    color: var(--main-color-two) !important;
+    background-color: var(--main-color-one) !important;
+    border-color: 2px solid var(--main-color-two) !important;
 }
 .btn-clearSearch {
     border-radius: 30px !important;
@@ -191,7 +206,7 @@ body {
 .btn-clearSearch:hover {
     background-color: var(--main-color-one) !important;
     color: var(--main-font-color) !important;
-    border-color: 1px solid var(--main-font-color) !important;
+    border-color: 2px solid var(--main-font-color) !important;
 }
 
 /* Design des cards de recettes */
@@ -245,35 +260,72 @@ body {
 /*--------------------------------------------------------------------------------------------------------------------*/
 /* RecipeCreate and Update Page */
 
+#recipe_title {
+    color: var(--main-color-two) !important;
+    background-color: var(--main-font-color) !important;
+    border-color: 2px solid var(--main-color-two) !important;
+}
+
+#recipe_category {
+    margin-top: 8px !important;
+}
+/* Bouton de choix de la catégorie */
+#recipe_category_name {
+    width: 200px !important;
+    min-height: 38px !important;
+    color: var(--main-color-two) !important;
+    background-color: var(--main-font-color) !important;
+    border-color: 2px solid var(--main-color-two) !important;
+}
+
+/* Bouton de choix du fichier */
+#recipe_file {
+    color: var(--main-color-two) !important;
+    background-color: var(--main-font-color) !important;
+    border-color: 2px solid var(--main-color-two) !important;
+}
+
+/* Bouton de choix du temps de préparation et de cuisson */
+#recipe_preparationTime_hour, #recipe_preparationTime_minute, #recipe_cookingTime_hour, #recipe_cookingTime_minute  {
+    color: var(--main-color-two) !important;
+    background-color: var(--main-font-color) !important;
+    border-color: 2px solid var(--main-color-two) !important;
+}
+
+#recipe_content {
+    color: var(--main-color-two) !important;
+    background-color: var(--main-font-color) !important;
+    border-color: 2px solid var(--main-color-two) !important;
+}
 textarea#recipe_content {
     min-height: 300px !important;
     width: 100% !important;
 }
 
-#recipe_category_name {
-    width: 200px !important;
-    min-height: 38px !important;
+#recipe_note {
+    color: var(--main-color-two) !important;
+    background-color: var(--main-font-color) !important;
+    border-color: 2px solid var(--main-color-two) !important;
 }
 
-.btn-publish, .btn-modify {
+ .btn-publish, .btn-modify {
     border-radius: 30px !important;
     color: var(--main-font-color) !important;
-    background-color: var(--main-color-four) !important;
+    background-color: var(--main-color-two) !important;
     border-color: 2px solid var(--main-font-color) !important;
 }
 .btn-publish:hover, .btn-modify:hover {
-    border-radius: 30px !important;
-    color: var(--main-font-color) !important;
+    color: var(--main-color-two) !important;
     background-color: var(--main-color-one) !important;
-    border-color: 2px solid var(--main-color-four) !important;
+    border-color: 2px solid var(--main-color-two) !important;
 }
 
 /*--------------------------------------------------------------------------------------------------------------------*/
 /* RecipeReadPage */
 
 .recipe-img {
-    height: 500px !important;
-    width: 700px !important;
+    height: 600px !important;
+    width: 1200px !important;
     display: block !important;
     margin-left: auto !important;
     margin-right: auto !important;
@@ -288,6 +340,19 @@ textarea#recipe_content {
 p.read-content {
     white-space: pre-wrap !important;
     text-align: justify !important;
+}
+
+.readRecipe-modifyButton {
+    border-radius: 30px !important;
+    color: var(--main-font-color) !important;
+    background-color: var(--main-color-four) !important;
+    border-color: 2px solid var(--main-font-color) !important;
+}
+
+.readRecipe-modifyButton:hover {
+    color: var(--main-color-two) !important;
+    background-color: var(--main-color-one) !important;
+    border-color: 2px solid var(--main-color-two) !important;
 }
 
 /*--------------------------------------------------------------------------------------------------------------------*/
