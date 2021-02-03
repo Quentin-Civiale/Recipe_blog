@@ -84,6 +84,18 @@
     "friendsofphp/proxy-manager-lts": {
         "version": "v1.0.3"
     },
+    "friendsofsymfony/ckeditor-bundle": {
+        "version": "2.0",
+        "recipe": {
+            "repo": "github.com/symfony/recipes-contrib",
+            "branch": "master",
+            "version": "2.0",
+            "ref": "8eb1cd0962ded6a6d6e1e5a9b6d3e888f9f94ff6"
+        },
+        "files": [
+            "config/packages/fos_ckeditor.yaml"
+        ]
+    },
     "laminas/laminas-code": {
         "version": "3.4.1"
     },
@@ -516,6 +528,18 @@
     },
     "symfony/yaml": {
         "version": "v5.2.1"
+    },
+    "tbmatuka/editorjs-bundle": {
+        "version": "0.1",
+        "recipe": {
+            "repo": "github.com/symfony/recipes-contrib",
+            "branch": "master",
+            "version": "0.1",
+            "ref": "319a3f1462e367f432ed2a70bfd59c927edb0fe8"
+        },
+        "files": [
+            "config/packages/editorjs.yaml"
+        ]
     },
     "twig/extra-bundle": {
         "version": "v3.2.1"
