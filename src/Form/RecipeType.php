@@ -3,6 +3,7 @@
 namespace App\Form;
 
 use App\Entity\Recipe;
+use FOS\CKEditorBundle\Form\Type\CKEditorType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
@@ -31,7 +32,7 @@ class RecipeType extends AbstractType
                     "class" => ""
                 ],
             ])
-            ->add('content', TextareaType::class, [
+            ->add('content', CKEditorType::class, [
                 "label" => "Contenu :",
                 "attr" => [
                     "class" => "form-control",

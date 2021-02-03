@@ -51,7 +51,7 @@
             </div>
             <br/>
             <div class="mb-4">
-                {{ form_row(form.content) }}
+                {{ form_row(form.content | raw ) }}
             </div>
             <div class="mb-4">
                 {{ form_row(form.note) }}
