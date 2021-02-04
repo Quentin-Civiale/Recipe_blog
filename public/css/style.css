@@ -54,6 +54,7 @@ body {
     --main-color-three: #6c757d !important;
     --main-color-four: #FF8A65 !important;
     --main-font-color: #ffffff !important;
+    --danger-color: #dc3545 !important;
 }
 
 /* Couleur v1*/
@@ -301,6 +302,14 @@ textarea#recipe_content {
     min-height: 300px !important;
     width: 100% !important;
 }
+#cke_recipe_content {
+    color: var(--main-color-two) !important;
+    background-color: var(--main-font-color) !important;
+    border-color: 2px solid var(--main-color-two) !important;
+}
+.cke_top, .cke_bottom {
+    background-color: var(--main-color-four) !important;
+}
 
 #recipe_note {
     color: var(--main-color-two) !important;
@@ -342,17 +351,48 @@ p.read-content {
     text-align: justify !important;
 }
 
-.readRecipe-modifyButton {
+.readRecipe-modifyBtn {
     border-radius: 30px !important;
     color: var(--main-font-color) !important;
     background-color: var(--main-color-four) !important;
     border-color: 2px solid var(--main-font-color) !important;
 }
-
-.readRecipe-modifyButton:hover {
+.readRecipe-modifyBtn:hover {
     color: var(--main-color-two) !important;
     background-color: var(--main-color-one) !important;
     border-color: 2px solid var(--main-color-two) !important;
+}
+
+.readRecipe-deleteBtn {
+    border-radius: 30px !important;
+    color: var(--main-font-color) !important;
+    background-color: var(--danger-color) !important;
+    border-color: 2px solid var(--main-font-color) !important;
+}
+.readRecipe-deleteBtn:hover {
+    color: var(--danger-color) !important;
+    background-color: var(--main-font-color) !important;
+    border-color: 2px solid var(--danger-color) !important;
+}
+.readRecipe-cancelBtn {
+    border-radius: 30px !important;
+    color: var(--main-font-color) !important;
+    background-color: var(--main-color-four) !important;
+    border-color: 2px solid var(--main-font-color) !important;
+}
+.readRecipe-cancelBtn:hover {
+    color: var(--main-color-two) !important;
+    background-color: var(--main-color-one) !important;
+    border-color: 2px solid var(--main-color-two) !important;
+}
+
+.modal-header, .modal-footer {
+    color: var(--main-font-color) !important;
+    background-color: var(--main-color-four) !important;
+}
+.modal-body {
+    color: var(--main-color-two) !important;
+    background-color: var(--main-font-color) !important;
 }
 
 /*--------------------------------------------------------------------------------------------------------------------*/
@@ -407,5 +447,5 @@ p.read-content {
     color: var(--main-font-color) !important;
 }
 .copyright:hover {
-    color: var(--main-color-two) !important;
+    color: var(--main-color-three) !important;
 }
