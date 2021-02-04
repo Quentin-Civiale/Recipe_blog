@@ -24,7 +24,7 @@
                         <a {% if 'index' in app.request.attributes.get('_route') %} class="active nav-link" {% endif %} class="nav-link" aria-current="page" href="{{  path('index') }}">Accueil</a>
                     </li>
                     <li class="nav-item">
-                        <a {% if 'recipe_list' in app.request.attributes.get('_route') %} class="active nav-link" {% endif %} class="nav-link" aria-current="page" href="{{  path('recipe_list') }}">Les Recettes</a>
+                        <a {% if 'recipe_list' in app.request.attributes.get('_route') %} class="active nav-link" {% elseif 'blog_read' in app.request.attributes.get('_route') %} class="active nav-link" {% endif %} class="nav-link" aria-current="page" href="{{  path('recipe_list') }}">Les Recettes</a>
                     </li>
                     <li class="nav-item">
                         <a {% if 'blog_create' in app.request.attributes.get('_route') %} class="active nav-link" {% endif %} class="nav-link" aria-current="page" href="{{ path('blog_create') }}">Publier une nouvelle recette</a>
@@ -72,7 +72,7 @@
             <hr/>
 
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center">
-                <div class="footer_info">&copy; <span id="year"></span> quentin-civiale.fr - Tous droits réservés • Design et développement par
+                <div class="footer_info">&copy; <span id="year"></span> recettes-de-lauramay.fr - Tous droits réservés • Design et développement par
                     <a href="http://quentin-civiale.fr/" class="copyright" title="Quentin Civiale - Développeur Web Junior" target="_blank" rel="author">Quentin Civiale</a>
                 </div>
             </div>

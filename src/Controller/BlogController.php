@@ -67,18 +67,6 @@ class BlogController extends AbstractController
     }
 
     /**
-     * @Route("/les-recettes/recette-N°{id}", name="blog_read")
-     * @param Recipe $recipe
-     * @return Response
-     */
-    public function read(Recipe $recipe): Response
-    {
-        return $this->render("blog/read.html.twig", [
-            "recipe" => $recipe
-        ]);
-    }
-
-    /**
      * @Route("/publier-recette", name="blog_create")
      * @param Request $request
      * @param UploaderInterface $uploader
@@ -104,8 +92,22 @@ class BlogController extends AbstractController
             return $this->redirectToRoute("blog_read", ["id" => $recipe->getId()]);
         }
 
+        $this->addFlash('message', 'Recette créée avec succès !');
+
         return $this->render("blog/create.html.twig", [
             "form" => $form->createView()
+        ]);
+    }
+
+    /**
+     * @Route("/les-recettes/recette-N°{id}", name="blog_read")
+     * @param Recipe $recipe
+     * @return Response
+     */
+    public function read(Recipe $recipe): Response
+    {
+        return $this->render("blog/read.html.twig", [
+            "recipe" => $recipe
         ]);
     }
 
@@ -136,5 +138,21 @@ class BlogController extends AbstractController
         return $this->render("blog/update.html.twig", [
             "form" => $form->createView()
         ]);
+    }
+
+    /**
+     * @Route("/supprimer-recette N°{id}", name="blog_delete")
+     * @param Recipe $recipe
+     * @return Response
+     */
+    public function delete(Recipe $recipe): Response
+    {
+        $recipeDelete = $this->getDoctrine()->getManager();
+        $recipeDelete->remove($recipe);
+        $recipeDelete->flush();
+
+        $this->addFlash('message', 'Recette supprimée avec succès');
+
+        return $this->redirectToRoute('recipe_list');
     }
 }

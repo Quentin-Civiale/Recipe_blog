@@ -3,68 +3,105 @@
 {% block readRecipe %}
     <br/>
 
-        <div class="col-lg-8 offset-lg-2">
-            <div class="row">
-                <h1>{{ recipe.category.name|capitalize }} - <strong class="italic-text">{{ recipe.title }}</strong></h1>
-                <small>Publié le {{ recipe.publishedAt|date("d/m/Y") }}</small>
-            </div>
-            <br/>
-            <img class="card-img img-fluid img-thumbnail rounded recipe-img" src="{{ asset(recipe.image) }}" alt="{{ recipe.title }}">
-            <br/>
-            <div class="row">
-                <div class="col-lg-4">
-                    <div class="card card-read-recipe rounded">
-                        <br/>
-                        <div class="col-lg-10 offset-lg-1">
-                            <h3><i class="bi bi-hourglass-split"></i> Temps de préparation :</h3>
-                            <p>{{ recipe.preparationTime|format_datetime('none', 'short', locale='fr') }}</p>
-                        </div>
-                    </div>
+    {% for message in app.flashes('message') %}
+        <div class="col-lg-6 offset-lg-3 alert alert-success" role="alert">
+            {{ message }}
+            <button type="button" class="offset-lg-8 btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    {% endfor %}
+
+    <div class="col-lg-8 offset-lg-2">
+        <div class="row">
+            <h1>{{ recipe.category.name|capitalize }} - <strong class="italic-text">{{ recipe.title }}</strong></h1>
+            <small>Publié le {{ recipe.publishedAt|date("d/m/Y") }}</small>
+        </div>
+        <br/>
+        <img class="card-img img-fluid img-thumbnail rounded recipe-img" src="{{ asset(recipe.image) }}" alt="{{ recipe.title }}">
+        <br/>
+        <div class="row">
+            <div class="col-lg-4">
+                <div class="card card-read-recipe rounded">
                     <br/>
-                    <div class="card card-read-recipe rounded">
-                        <br/>
-                        <div class="col-lg-10 offset-lg-1">
-                            <h3><i class="bi bi-hourglass-split"></i> Temps de cuisson :</h3>
-                            <p>{{ recipe.cookingTime|format_datetime('none', 'short', locale='fr') }}</p>
-                        </div>
-                    </div>
-                    <br/>
-                    <div class="card card-read-recipe rounded">
-                        <br/>
-                        <div class="col-lg-10 offset-lg-1">
-                            <h3><i class="bi bi-cart3"></i> Listes des ingrédients :</h3>
-                            <p>- Ingrédient N°1</p>
-                            <p>- Ingrédient N°2</p>
-                            <p>- Ingrédient N°3</p>
-                            <p>- Ingrédient N°4</p>
-                            <p>- Ingrédient N°5</p>
-                            <p>- Ingrédient N°6</p>
-                        </div>
+                    <div class="col-lg-10 offset-lg-1">
+                        <h3><i class="bi bi-hourglass-split"></i> Temps de préparation :</h3>
+                        <p>{{ recipe.preparationTime|format_datetime('none', 'short', locale='fr') }}</p>
                     </div>
                 </div>
-                <div class="col-lg-8">
-                    <div class="card card-read-recipe rounded">
-                        <br/>
-                        <div class="col-lg-10 offset-lg-1">
-                            <h3>Préparation :</h3>
-                            <p class="read-content">{{ recipe.content | raw }}</p>
-                        </div>
+                <br/>
+                <div class="card card-read-recipe rounded">
+                    <br/>
+                    <div class="col-lg-10 offset-lg-1">
+                        <h3><i class="bi bi-hourglass-split"></i> Temps de cuisson :</h3>
+                        <p>{{ recipe.cookingTime|format_datetime('none', 'short', locale='fr') }}</p>
+                    </div>
+                </div>
+                <br/>
+                <div class="card card-read-recipe rounded">
+                    <br/>
+                    <div class="col-lg-10 offset-lg-1">
+                        <h3><i class="bi bi-cart3"></i> Listes des ingrédients :</h3>
+                        <p>- Ingrédient N°1</p>
+                        <p>- Ingrédient N°2</p>
+                        <p>- Ingrédient N°3</p>
+                        <p>- Ingrédient N°4</p>
+                        <p>- Ingrédient N°5</p>
+                        <p>- Ingrédient N°6</p>
                     </div>
                 </div>
             </div>
-            <br/>
-            <div class="card card-read-recipe">
-                <div class="col-lg-10 offset-lg-1 italic-text">
+            <div class="col-lg-8">
+                <div class="card card-read-recipe rounded">
                     <br/>
-                    <h3>Notes</h3>
-                    <pre>{{ recipe.note }}</pre>
+                    <div class="col-lg-10 offset-lg-1">
+                        <h3>Préparation :</h3>
+                        <p class="read-content">{{ recipe.content | raw }}</p>
+                    </div>
                 </div>
-            </div>
-            <br/>
-            <div class="offset-lg-10">
-                <a href="{{ path('blog_update', { id: recipe.id }) }}" class="btn readRecipe-modifyButton">Modifier la recette</a>
             </div>
         </div>
+        <br/>
+        <div class="card card-read-recipe">
+            <div class="col-lg-10 offset-lg-1 italic-text">
+                <br/>
+                <h3>Notes</h3>
+                <pre>{{ recipe.note }}</pre>
+            </div>
+        </div>
+        <br/>
+        <div class="row justify-content-between">
+            <div class="col-lg-6">
+                <div class="col-lg-4 offset-lg-4">
+                    <a href="{{ path('blog_update', { id: recipe.id }) }}" class="btn readRecipe-modifyBtn">Modifier la recette</a>
+                </div>
+            </div>
+
+            <div class="col-lg-6">
+                <div class="col-lg-4 offset-lg-4">
+                    <a href="#" class="btn readRecipe-deleteBtn" data-bs-toggle="modal" data-bs-target="#modalRecipeDelete" data-id="{{ recipe.id }}" data-title="{{ recipe.title }}">Supprimer</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal -->
+        <div class="modal fade" id="modalRecipeDelete" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Supprimer la recette</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Êtes-vous sûr(e) de vouloir supprimer la recette "{{ recipe.title }}" ?</p>
+                    </div>
+                    <div class="modal-footer">
+                        <a class="btn readRecipe-cancelBtn" data-bs-dismiss="modal">Annuler</a>
+                        <a href="{{ path('blog_delete', { id: recipe.id }) }}" class="btn readRecipe-deleteBtn">Supprimer</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
 
     <br/>
 {% endblock %}
