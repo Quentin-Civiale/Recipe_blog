@@ -10,20 +10,6 @@
         </div>
     </div>
 
-{#    <br/>#}
-
-{#    <div class="col-lg-8 offset-lg-2">#}
-{#        <div class="container">#}
-{#            {{ form_start(form) }}#}
-{#                {{ form_row(form.title) }}#}
-{#                {{ form_row(form.category) }}#}
-{#                {{ form_row(form.file) }}#}
-{#                {{ form_row(form.content) }}#}
-{#                <button type="submit">Publier</button>#}
-{#            {{ form_end(form) }}#}
-{#        </div>#}
-{#    </div>#}
-
     <br/>
 
     <div class="col-lg-8 offset-lg-2">
@@ -56,7 +42,7 @@
                 <div class="mb-4">
                     {{ form_row(form.note) }}
                 </div>
-                <div>
+                <div class="offset-lg-11">
                     <button class="btn btn-publish" type="submit">Publier</button>
                 </div>
             {{ form_end(form) }}
