@@ -89,10 +89,10 @@ class BlogController extends AbstractController
             $this->getDoctrine()->getManager()->persist($recipe);
             $this->getDoctrine()->getManager()->flush();
 
+            $this->addFlash('recipeSuccess', 'Recette créée avec succès !');
+
             return $this->redirectToRoute("blog_read", ["id" => $recipe->getId()]);
         }
-
-        $this->addFlash('message', 'Recette créée avec succès !');
 
         return $this->render("blog/create.html.twig", [
             "form" => $form->createView()
@@ -151,7 +151,7 @@ class BlogController extends AbstractController
         $recipeDelete->remove($recipe);
         $recipeDelete->flush();
 
-        $this->addFlash('message', 'Recette supprimée avec succès');
+        $this->addFlash('recipeDelete', 'Recette supprimée avec succès');
 
         return $this->redirectToRoute('recipe_list');
     }
