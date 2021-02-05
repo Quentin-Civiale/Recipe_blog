@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Recipe;
 use App\Form\RecipeSearchType;
 use App\Form\RecipeType;
+use App\Security\Voter\RecipeVoter;
 use App\Uploader\UploaderInterface;
 use Doctrine\ORM\Tools\Pagination\Paginator;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -74,7 +75,10 @@ class BlogController extends AbstractController
      */
     public function create(Request $request, UploaderInterface $uploader): Response
     {
+        $this->denyAccessUnlessGranted('ROLE_USER');
+
         $recipe = new Recipe();
+        $recipe->setUser($this->getUser());
 
         $form = $this->createForm(RecipeType::class, $recipe, [
             "validation_groups" => ["Default", "create"]
@@ -120,6 +124,8 @@ class BlogController extends AbstractController
      */
     public function update(Request $request, Recipe $recipe, UploaderInterface $uploader): Response
     {
+        $this->denyAccessUnlessGranted(RecipeVoter::EDIT, $recipe);
+
         $form = $this->createForm(RecipeType::class, $recipe)->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
