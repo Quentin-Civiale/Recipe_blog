@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block registration %}
+    <br/>
+
+    <div class="col-lg-10 offset-lg-1">
+        <div class="container">
+            <h1>Inscription</h1>
+        </div>
+        <br/>
+        <div class="col-lg-10 offset-lg-1">
+            <h4>Inscrivez-vous afin de partager vos meilleures recettes avec la communauté !</h4>
+        </div>
+    </div>
+
+    <br/>
+
+    <div class="col-lg-4 offset-lg-4">
+        <div class="container">
+            {{ form_start(form) }}
+            <div class="mb-4">
+                {{ form_errors(form) }}
+            </div>
+            <div class="row">
+                <div class="col-6">
+                    {{ form_row(form.email) }}
+                </div>
+                <div class="col-6">
+                    {{ form_row(form.pseudo) }}
+                </div>
+            </div>
+            <br/>
+            <div class="mb-4">
+                {{ form_row(form.plainPassword) }}
+            </div>
+            <div class="offset-lg-9">
+                <button class="btn btn-registration" type="submit">S'inscrire</button>
+            </div>
+            {{ form_end(form) }}
+        </div>
+    </div>
+
+    <br/>
+{% endblock %}
