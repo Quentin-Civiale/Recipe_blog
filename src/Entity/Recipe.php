@@ -60,6 +60,12 @@ class Recipe
      */
     private $category;
 
+    /**
+     * @var User
+     * @ORM\ManyToOne(targetEntity="App\Entity\User")
+     */
+    private $user;
+
     //----------------------------------------------------
 
     public function __construct()
@@ -170,8 +176,6 @@ class Recipe
         $this->cookingTime = $cookingTime;
     }
 
-
-
     //--------------------------------------------------------
 
     /**
@@ -188,5 +192,23 @@ class Recipe
     public function setCategory(Category $category): void
     {
         $this->category = $category;
+    }
+
+    //--------------------------------------------------------
+
+    /**
+     * @return User
+     */
+    public function getUser(): User
+    {
+        return $this->user;
+    }
+
+    /**
+     * @param User $user
+     */
+    public function setUser(User $user): void
+    {
+        $this->user = $user;
     }
 }

@@ -13,7 +13,7 @@
     <div class="col-lg-8 offset-lg-2">
         <div class="row">
             <h1>{{ recipe.category.name|capitalize }} - <strong class="italic-text">{{ recipe.title }}</strong></h1>
-            <small>Publié le {{ recipe.publishedAt|date("d/m/Y") }}</small>
+            <small>Publié le {{ recipe.publishedAt|date("d/m/Y") }} par {{ recipe.user.pseudo }}</small>
         </div>
         <br/>
         <img class="card-img img-fluid img-thumbnail rounded recipe-img" src="{{ asset(recipe.image) }}" alt="{{ recipe.title }}">
@@ -68,23 +68,25 @@
             </div>
         </div>
         <br/>
-        <div class="row justify-content-between">
-            <div class="col-lg-6">
-                <div class="col-lg-4 offset-lg-4">
-                    <a href="{{ path('blog_update', { id: recipe.id }) }}" class="btn readRecipe-modifyBtn">Modifier la recette</a>
+        {% if is_granted('edit', recipe) %}
+            <div class="row justify-content-between">
+                <div class="col-lg-6">
+                    <div class="col-lg-4 offset-lg-4">
+                        <a href="{{ path('blog_update', { id: recipe.id }) }}" class="btn readRecipe-modifyBtn">Modifier la recette</a>
+                    </div>
+                </div>
+                <!-- Btn d'appel à la modale -->
+                <div class="col-lg-6">
+                    <div class="col-lg-4 offset-lg-4">
+                        <a href="#" class="btn readRecipe-deleteBtn" data-bs-toggle="modal" data-bs-target="#modalRecipeDelete" data-id="{{ recipe.id }}" data-title="{{ recipe.title }}">Supprimer</a>
+                    </div>
                 </div>
             </div>
-
-            <div class="col-lg-6">
-                <div class="col-lg-4 offset-lg-4">
-                    <a href="#" class="btn readRecipe-deleteBtn" data-bs-toggle="modal" data-bs-target="#modalRecipeDelete" data-id="{{ recipe.id }}" data-title="{{ recipe.title }}">Supprimer</a>
-                </div>
-            </div>
-        </div>
+        {% endif %}
 
         <!-- Modal -->
         <div class="modal fade" id="modalRecipeDelete" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
+            <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title" id="exampleModalLabel">Supprimer la recette</h5>

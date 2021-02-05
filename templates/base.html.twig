@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="fr">
+
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -11,7 +12,9 @@
             <link type="text/css" rel="stylesheet" href="{{ asset('css/style.css') }}" />
         {% endblock %}
     </head>
+
     <body>
+
     <nav class="navbar sticky-top navbar-expand-lg navbar-light navbar-website" style="background-color: #007bff;">
         <div class="container-fluid">
             <a class="navbar-brand" href="{{  path('index') }}"><img src="{{ asset('images/logo_v2.png') }}" class="websiteLogo" alt="websiteLogo"></a>
@@ -26,10 +29,23 @@
                     <li class="nav-item">
                         <a {% if 'recipe_list' in app.request.attributes.get('_route') %} class="active nav-link" {% elseif 'blog_read' in app.request.attributes.get('_route') %} class="active nav-link" {% endif %} class="nav-link" aria-current="page" href="{{  path('recipe_list') }}">Les Recettes</a>
                     </li>
-                    <li class="nav-item">
-                        <a {% if 'blog_create' in app.request.attributes.get('_route') %} class="active nav-link" {% endif %} class="nav-link" aria-current="page" href="{{ path('blog_create') }}">Publier une nouvelle recette</a>
-                    </li>
                 </ul>
+                &nbsp;
+                {% if is_granted("ROLE_USER") %}
+                    <div class="nav-item">
+                        <a {% if 'blog_create' in app.request.attributes.get('_route') %} class="active btn recipeCreateBtn" {% endif %} class="btn recipeCreateBtn" aria-current="page" href="{{ path('blog_create') }}">Publier une nouvelle recette <i class="bi bi-plus"></i></a>
+                    </div>
+                    <div class="nav-item">
+                        <a href="{{ path('security_logout') }}" class="btn logoutBtn">Se déconnecter</a>
+                    </div>
+                {% else %}
+                    <div class="nav-item">
+                        <a href="{{ path('security_login') }}" class="btn loginBtn">Se connecter</a>
+                    </div>
+                    <div class="nav-item">
+                        <a href="{{ path('registration') }}" class="btn loginBtn">S'inscrire</a>
+                    </div>
+                {% endif %}
             </div>
         </div>
     </nav>
@@ -41,6 +57,8 @@
         </div>
 
         {% block home %}{% endblock %}
+        {% block login %}{% endblock %}
+        {% block registration %}{% endblock %}
         {% block recipeList %}{% endblock %}
         {% block createRecipe %}{% endblock %}
         {% block readRecipe %}{% endblock %}
