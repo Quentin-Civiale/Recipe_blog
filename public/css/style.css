@@ -98,22 +98,58 @@ body {
 .nav-item {
     margin: auto 10px !important;
 }
-.navbar-light .navbar-nav .nav-link {
+.navbar-nav .nav-link {
     color: var(--main-color-one) !important;
     border: 3px solid var(--main-font-color) !important;
     border-radius: 30px !important;
 }
-.navbar-light .navbar-nav .nav-link.active {
+.navbar-nav .nav-link.active {
     color: var(--main-color-two) !important;
     background-color: var(--main-font-color) !important;
+    border: 3px solid var(--main-color-two) !important;
+}
+.navbar-nav .nav-link:hover {
+    color: var(--main-color-two) !important;
+    background-color: var(--main-font-color) !important;
+    border: 3px solid var(--main-color-two) !important;
+}
+
+.recipeCreateBtn {
+    color: var(--main-font-color) !important;
+    background-color: var(--main-color-two) !important;
     border: 3px solid var(--main-color-two) !important;
     border-radius: 30px !important;
 }
-.navbar-light .navbar-nav .nav-link:hover {
+.recipeCreateBtn.active {
     color: var(--main-color-two) !important;
     background-color: var(--main-font-color) !important;
     border: 3px solid var(--main-color-two) !important;
+}
+.recipeCreateBtn:hover {
+    color: var(--main-color-two) !important;
+    background-color: var(--main-color-one) !important;
+    border: 3px solid var(--main-color-two) !important;
+}
+
+.loginBtn {
+    color: var(--main-font-color) !important;
+    background-color: #28a745 !important;
+    border: 3px solid #28a745 !important;
     border-radius: 30px !important;
+}
+.loginBtn:hover {
+    color: #28a745 !important;
+    background-color: var(--main-font-color) !important;
+}
+.logoutBtn {
+    color: var(--main-font-color) !important;
+    background-color: #dc3545 !important;
+    border: 3px solid #dc3545 !important;
+    border-radius: 30px !important;
+}
+.logoutBtn:hover {
+    color: #dc3545 !important;
+    background-color: var(--main-font-color) !important;
 }
 
 /* Caroussel */
@@ -162,6 +198,48 @@ body {
 #btn-to-top.show {
     opacity: 1;
     visibility: visible;
+}
+
+/*--------------------------------------------------------------------------------------------------------------------*/
+/* RegistrationPage */
+
+#user_email, #user_pseudo, #user_plainPassword_first, #user_plainPassword_second {
+    color: var(--main-color-two) !important;
+    background-color: var(--main-font-color) !important;
+    border-color: 2px solid var(--main-color-two) !important;
+}
+
+.btn-registration {
+    border-radius: 30px !important;
+    color: var(--main-font-color) !important;
+    background-color: var(--main-color-two) !important;
+    border-color: 2px solid var(--main-font-color) !important;
+}
+.btn-registration:hover {
+    color: var(--main-color-two) !important;
+    background-color: var(--main-color-one) !important;
+    border-color: 2px solid var(--main-color-two) !important;
+}
+
+/*--------------------------------------------------------------------------------------------------------------------*/
+/* LoginPage */
+
+#login_username, #login_password {
+    color: var(--main-color-two) !important;
+    background-color: var(--main-font-color) !important;
+    border-color: 2px solid var(--main-color-two) !important;
+}
+
+.btn-login {
+    border-radius: 30px !important;
+    color: var(--main-font-color) !important;
+    background-color: var(--main-color-two) !important;
+    border-color: 2px solid var(--main-font-color) !important;
+}
+.btn-login:hover {
+    color: var(--main-color-two) !important;
+    background-color: var(--main-color-one) !important;
+    border-color: 2px solid var(--main-color-two) !important;
 }
 
 /*--------------------------------------------------------------------------------------------------------------------*/
