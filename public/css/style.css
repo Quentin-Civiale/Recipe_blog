@@ -77,6 +77,10 @@ body {
 .italic-text {
     font-style: italic !important;
 }
+.center {
+    text-align: center !important;
+    vertical-align: middle !important;
+}
 
 /*--------------------------------------------------------------------------------------------------------------------*/
 /* HomePage */
@@ -209,6 +213,12 @@ body {
     border-color: 2px solid var(--main-color-two) !important;
 }
 
+.btn-passwordLogo {
+    color: var(--main-color-three) !important;
+    background-color: var(--main-color-one) !important;
+    border-color: 2px solid var(--main-color-two) !important;
+}
+
 .btn-registration {
     border-radius: 30px !important;
     color: var(--main-font-color) !important;
@@ -240,6 +250,15 @@ body {
     color: var(--main-color-two) !important;
     background-color: var(--main-color-one) !important;
     border-color: 2px solid var(--main-color-two) !important;
+}
+
+/* Registration & login */
+.card-userRegistration {
+    border-radius: 30px !important;
+    border: 3px solid var(--main-color-four) !important;
+    background-color: var(--main-font-color) !important;
+    color: var(--main-color-two) !important;
+    overflow: hidden !important;
 }
 
 /*--------------------------------------------------------------------------------------------------------------------*/
@@ -298,12 +317,7 @@ body {
 .card-recipeList:hover {
     border: 3px solid var(--main-font-color) !important;
 }
-.card-header {
 
-}
-.card-body {
-    background-color: var(--main-color-one) !important;
-}
 .recipeList_titleCard {
     color: var(--main-font-color) !important;
     font-size: 25px !important;

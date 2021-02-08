@@ -16,29 +16,66 @@
     <br/>
 
     <div class="col-lg-4 offset-lg-4">
-        <div class="container">
-            {{ form_start(form) }}
-            <div class="mb-4">
-                {{ form_errors(form) }}
-            </div>
-            <div class="row">
-                <div class="col-6">
-                    {{ form_row(form.email) }}
+        <div class="card card-userRegistration">
+            <div class="card-body">
+                <div class="container">
+                    <h4 class="card-title">
+                        Je m'inscris
+                    </h4>
+                    {{ form_start(form) }}
+                    <div class="mb-4">
+                        {{ form_errors(form) }}
+                    </div>
+                    <div class="mb-4">
+                        {{ form_row(form.email) }}
+                    </div>
+                    <div class="mb-4">
+                        {{ form_row(form.pseudo) }}
+                    </div>
+                    <br/>
+                    <div class="mb-4">
+                        <i class="btn btn-passwordLogo bi bi-eye-fill" id="changePasswordLogo" onclick="DisplayHidePassword()"></i>
+                        <span id="displayPassword">Afficher</span> le mot de passe
+                    </div>
+                    <div class="mb-4">
+{#                        <input type="checkbox" onclick="DisplayHidePassword()"> <span id="displayPassword">Afficher</span> le mot de passe#}
+                        {{ form_row(form.plainPassword) }}
+                    </div>
+                    <div class="offset-lg-8">
+                        <button class="btn btn-registration" type="submit">Créer mon compte</button>
+                    </div>
+                    {{ form_end(form) }}
                 </div>
-                <div class="col-6">
-                    {{ form_row(form.pseudo) }}
+            </div>
+            <div class="card-body">
+                <div class="col-lg-8 offset-lg-2 center">
+                    <hr/>
+                    <p>Vous avez déjà un compte ? <a href="{{ path('security_login') }}" class="">Connectez-vous</a></p>
                 </div>
             </div>
-            <br/>
-            <div class="mb-4">
-                {{ form_row(form.plainPassword) }}
-            </div>
-            <div class="offset-lg-9">
-                <button class="btn btn-registration" type="submit">S'inscrire</button>
-            </div>
-            {{ form_end(form) }}
         </div>
     </div>
 
     <br/>
+
+    <script>
+        function DisplayHidePassword()
+        {
+            var input = document.getElementById("user_plainPassword_first");
+            var span = document.getElementById("displayPassword");
+            var i = document.getElementById("changePasswordLogo");
+            if (input.type === "password")
+            {
+                input.type = "text";
+                span.innerText = "Masquer";
+                i.className = "btn btn-passwordLogo bi bi-eye-slash-fill";
+            }
+            else
+            {
+                input.type = "password";
+                span.innerText = "Afficher";
+                i.className = "btn btn-passwordLogo bi bi-eye-fill";
+            }
+        }
+    </script>
 {% endblock %}
