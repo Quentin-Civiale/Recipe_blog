@@ -12,21 +12,34 @@
     <br/>
 
     <div class="col-lg-4 offset-lg-4">
-        <div class="container">
-            {{ form_start(form) }}
-            <div class="mb-4">
-                {{ form_errors(form) }}
+        <div class="card card-userRegistration">
+            <div class="card-body">
+                <div class="container">
+                    <h4 class="card-title">
+                        Je me connecte
+                    </h4>
+                    {{ form_start(form) }}
+                    <div class="mb-4">
+                        {{ form_errors(form) }}
+                    </div>
+                    <div class="mb-4">
+                        {{ form_row(form.username) }}
+                    </div>
+                    <div class="mb-4">
+                        {{ form_row(form.password) }}
+                    </div>
+                    <div class="offset-lg-9">
+                        <button class="btn btn-login" type="submit">Se connecter</button>
+                    </div>
+                    {{ form_end(form) }}
+                </div>
             </div>
-            <div class="mb-4">
-                {{ form_row(form.username) }}
+            <div class="card-body">
+                <div class="col-lg-8 offset-lg-2 center">
+                    <hr/>
+                    <p>Vous n'avez pas de compte ? <a href="{{ path('registration') }}" class="">Inscrivez-vous</a></p>
+                </div>
             </div>
-            <div class="mb-4">
-                {{ form_row(form.password) }}
-            </div>
-            <div class="offset-lg-9">
-                <button class="btn btn-login" type="submit">Se connecter</button>
-            </div>
-            {{ form_end(form) }}
         </div>
     </div>
 
