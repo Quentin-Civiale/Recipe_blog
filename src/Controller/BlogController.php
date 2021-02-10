@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Recipe;
+use App\Entity\User;
 use App\Form\RecipeSearchType;
 use App\Form\RecipeType;
 use App\Security\Voter\RecipeVoter;
@@ -64,6 +65,23 @@ class BlogController extends AbstractController
             "limit" => $limit,
             "range" => $range,
             "form" => $form->createView()
+        ]);
+    }
+
+    /**
+     * @Route("/mon-compte/mes-recettes", name="recipes_user")
+     * @return Response
+     */
+    public function getCurrentUserRecipes(): Response
+    {
+        $user = $this->getUser();
+        $recipesUser = $this->getDoctrine()->getRepository(Recipe::class)->findBy(['user' => $user], ['publishedAt' => 'DESC']);
+        $number = $this->getDoctrine()->getRepository(Recipe::class)->findBy(['user' => $user]);
+        $recipesNumber = count($number);
+
+        return $this->render('blog/user_account.html.twig', [
+            'recipesUser' => $recipesUser,
+            'recipesNumber' => $recipesNumber
         ]);
     }
 
