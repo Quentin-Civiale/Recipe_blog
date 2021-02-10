@@ -8,6 +8,7 @@
         {% block stylesheets %}
             <link rel="icon" type="image/x-icon" href="{{ asset('images/favicon.png') }}" />
             <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
             <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
             <link type="text/css" rel="stylesheet" href="{{ asset('css/style.css') }}" />
         {% endblock %}
@@ -35,8 +36,15 @@
                     <div class="nav-item">
                         <a {% if 'blog_create' in app.request.attributes.get('_route') %} class="active btn recipeCreateBtn" {% endif %} class="btn recipeCreateBtn" aria-current="page" href="{{ path('blog_create') }}">Publier une nouvelle recette <i class="bi bi-plus"></i></a>
                     </div>
-                    <div class="nav-item">
-                        <a href="{{ path('security_logout') }}" class="btn logoutBtn">Se déconnecter</a>
+                    <div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle accountDropdown" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                            Mon Compte
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-lg-end" aria-labelledby="dropdownMenuButton">
+                            <li><a class="dropdown-item recipesUserLink" href="{{ path('recipes_user') }}">Mes recettes</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item logoutLink" href="{{ path('security_logout') }}">Se déconnecter <i class="bi bi-box-arrow-right"></i></a></li>
+                        </ul>
                     </div>
                 {% else %}
                     <div class="nav-item">
@@ -60,6 +68,7 @@
         {% block login %}{% endblock %}
         {% block registration %}{% endblock %}
         {% block recipeList %}{% endblock %}
+        {% block currentUserRecipes %}{% endblock %}
         {% block createRecipe %}{% endblock %}
         {% block readRecipe %}{% endblock %}
         {% block updateRecipe %}{% endblock %}
@@ -99,6 +108,13 @@
 
     <script>
         document.getElementById("year").innerHTML = new Date().getFullYear();
+    </script>
+
+    <script>
+        var dropdownElementList = [].slice.call(document.querySelectorAll('.dropdown-toggle'))
+        var dropdownList = dropdownElementList.map(function (dropdownToggleEl) {
+            return new bootstrap.Dropdown(dropdownToggleEl)
+        })
     </script>
 
     {% block javascripts %}

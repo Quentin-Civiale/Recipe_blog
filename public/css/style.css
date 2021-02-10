@@ -55,6 +55,7 @@ body {
     --main-color-four: #FF8A65 !important;
     --main-font-color: #ffffff !important;
     --danger-color: #dc3545 !important;
+    --success-color: #28a745 !important;
 }
 
 /* Couleur v1*/
@@ -137,23 +138,44 @@ body {
 
 .loginBtn {
     color: var(--main-font-color) !important;
-    background-color: #28a745 !important;
-    border: 3px solid #28a745 !important;
+    background-color: var(--success-color) !important;
+    border: 3px solid var(--success-color) !important;
     border-radius: 30px !important;
 }
 .loginBtn:hover {
-    color: #28a745 !important;
+    color: var(--success-color) !important;
     background-color: var(--main-font-color) !important;
 }
-.logoutBtn {
+
+.accountDropdown {
     color: var(--main-font-color) !important;
-    background-color: #dc3545 !important;
-    border: 3px solid #dc3545 !important;
-    border-radius: 30px !important;
+    background-color: var(--main-color-three) !important;
+    border: 3px solid var(--main-color-three) !important;
+    /*border-radius: 30px !important;*/
 }
-.logoutBtn:hover {
-    color: #dc3545 !important;
+.accountDropdown:hover {
+    color: var(--main-font-color) !important;
+    background-color: var(--main-color-one) !important;
+    border: 3px solid var(--main-color-two) !important;
+    /*border-radius: 30px !important;*/
+}
+.recipesUserLink {
+    color: var(--main-color-two) !important;
     background-color: var(--main-font-color) !important;
+}
+.recipesUserLink:hover {
+    color: var(--main-font-color) !important;
+    background-color: var(--main-color-two) !important;
+}
+.logoutLink {
+    color: var(--danger-color) !important;
+    background-color: var(--main-font-color) !important;
+    /*border: 3px solid #dc3545 !important;*/
+    /*border-radius: 30px !important;*/
+}
+.logoutLink:hover {
+    color: var(--main-font-color) !important;
+    background-color: var(--danger-color) !important;
 }
 
 /* Caroussel */
@@ -259,6 +281,48 @@ body {
     background-color: var(--main-font-color) !important;
     color: var(--main-color-two) !important;
     overflow: hidden !important;
+}
+
+/*--------------------------------------------------------------------------------------------------------------------*/
+/* RecipeListUserPage */
+
+.card-recipeListUser {
+    border-radius: 30px !important;
+    border: 3px solid var(--main-color-two) !important;
+    background-color: var(--main-color-three) !important;
+    overflow: hidden !important;
+}
+.card-recipeListUser:hover {
+    border: 3px solid var(--main-font-color) !important;
+}
+
+.recipeListUser_titleCard {
+    color: var(--main-color-two) !important;
+    font-size: 25px !important;
+}
+.recipeListUser_categoryCard {
+    color: var(--main-color-two) !important;
+    font-size: 18px !important;
+    font-style: italic !important;
+}
+.recipeListUser_publishedAtCard {
+    color: var(--main-color-two) !important;
+}
+.recipeListUser_linkCard {
+    color: var(--main-font-color) !important;
+    text-decoration: none !important;
+}
+.recipeListUser_linkCard:hover {
+    color: var(--main-color-three) !important;
+    text-decoration: none !important;
+}
+
+.emptyPageToFooter {
+    min-height: 550px !important;
+}
+
+.spaceToFooter {
+    min-height: 120px !important;
 }
 
 /*--------------------------------------------------------------------------------------------------------------------*/

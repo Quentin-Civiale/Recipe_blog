@@ -33,12 +33,11 @@
                         {{ form_row(form.pseudo) }}
                     </div>
                     <br/>
-                    <div class="mb-4">
+                    <div class="mb-2">
                         <i class="btn btn-passwordLogo bi bi-eye-fill" id="changePasswordLogo" onclick="DisplayHidePassword()"></i>
                         <span id="displayPassword">Afficher</span> le mot de passe
                     </div>
                     <div class="mb-4">
-{#                        <input type="checkbox" onclick="DisplayHidePassword()"> <span id="displayPassword">Afficher</span> le mot de passe#}
                         {{ form_row(form.plainPassword) }}
                     </div>
                     <div class="offset-lg-8">
