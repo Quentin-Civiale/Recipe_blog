@@ -44,6 +44,11 @@ class User implements UserInterface
     private $registeredAt;
 
     /**
+     * @ORM\Column(type="string", length=50, nullable=true)
+     */
+    private $reset_password;
+
+    /**
      * User constructor.
      * @throws \Exception
      */
@@ -149,5 +154,17 @@ class User implements UserInterface
      */
     public function eraseCredentials()
     {
+    }
+
+    public function getResetPassword(): ?string
+    {
+        return $this->reset_password;
+    }
+
+    public function setResetPassword(?string $reset_password): self
+    {
+        $this->reset_password = $reset_password;
+
+        return $this;
     }
 }
