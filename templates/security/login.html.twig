@@ -3,6 +3,33 @@
 {% block login %}
     <br/>
 
+    {% for message in app.flashes('warning') %}
+        <div class="col-lg-6 offset-lg-3 alert alert-warning" role="alert">
+            <div class="row">
+                <span class="col-lg-11">{{ message }}</span>
+                <button type="button" class="btn-close col-lg-1" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        </div>
+    {% endfor %}
+
+    {% for message in app.flashes('message') %}
+        <div class="col-lg-6 offset-lg-3 alert alert-success" role="alert">
+            <div class="row">
+                <span class="col-lg-11">{{ message }}</span>
+                <button type="button" class="btn-close col-lg-1" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        </div>
+    {% endfor %}
+
+    {% for message in app.flashes('danger') %}
+        <div class="col-lg-6 offset-lg-3 alert alert-danger" role="alert">
+            <div class="row">
+                <span class="col-lg-11">{{ message }}</span>
+                <button type="button" class="btn-close col-lg-1" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        </div>
+    {% endfor %}
+
     <div class="col-lg-10 offset-lg-1">
         <div class="container">
             <h1>Connexion</h1>
@@ -36,6 +63,7 @@
             </div>
             <div class="card-body">
                 <div class="col-lg-8 offset-lg-2 center">
+                    <p><a href="{{ path('security_forgotten_pass') }}" class="">Mot de passe oublié ?</a></p>
                     <hr/>
                     <p>Vous n'avez pas de compte ? <a href="{{ path('registration') }}" class="">Inscrivez-vous</a></p>
                 </div>
@@ -43,5 +71,6 @@
         </div>
     </div>
 
+    <br/>
     <br/>
 {% endblock %}
