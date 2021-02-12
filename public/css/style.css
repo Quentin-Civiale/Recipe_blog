@@ -186,6 +186,54 @@ body {
     max-height: 400px !important;
 }
 
+/* Bandeau des catégories des recettes */
+.btn-categoryHome {
+    color: var(--main-font-color) !important;
+    background-color: var(--main-color-three) !important;
+    border: 2px solid var(--main-color-three) !important;
+    border-radius: 0 !important;
+}
+.btn-categoryHome:hover {
+    color: var(--main-font-color) !important;
+    background-color: var(--main-color-two) !important;
+    border: 2px solid var(--main-color-three) !important;
+}
+
+/* Card de présentation des thématiques */
+.card-thematic {
+    color: var(--main-font-color) !important;
+    background-color: var(--main-color-two) !important;
+    border: 3px solid var(--main-color-three) !important;
+}
+
+.thematic-child {
+    position: relative !important;
+    text-align: center !important;
+    color: white !important;
+    font-size: 160% !important;
+}
+.thematic-child:hover {
+    opacity: 0.9 !important;
+    font-size: 240% !important;
+}
+.thematicImg {
+    width: 314px !important;
+    height: 236px !important;
+    opacity: 0.4 !important;
+}
+.thematicImg:hover {
+    width: 314px !important;
+    height: 236px !important;
+    opacity: 0.9 !important;
+}
+.thematicName {
+    /*font-size: 150% !important;*/
+    position: absolute !important;
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important;
+}
+
 /* Bouton de retour vers le haut de la page */
 #btn-to-top {
     background: var(--main-color-one) !important;
