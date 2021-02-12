@@ -11,40 +11,48 @@
             <hr/>
 
             {% if recipesUser == NULL %}
-                    <br/>
-                    <div class="center">
-                        <h3>Vous n'avez pas encore créé de recettes. À ce rythme, vous ne serez jamais le nouveau Cyril Lignac !</h3>
-                    </div>
-                    <div class="emptyPageToFooter"></div>
+                <br/>
+                <div class="center">
+                    <h3>Vous n'avez pas encore créé de recettes. À ce rythme, vous ne serez jamais le nouveau Cyril Lignac !</h3>
+                </div>
 
-                {% else %}
+                <br/>
+                <br/>
+                <br/>
 
-                    <div>
-                        <h5>Nombre de recettes publiées : <span class="badge bg-secondary">{{ recipesNumber }}</span></h5>
-                    </div>
+                <div class="center">
+                    <a href="{{ path('blog_create') }}" class="btn btn-firstRecipe">Je crée ma première recette ici <i class="bi bi-arrow-right-circle-fill"></i></a>
+                </div>
+                <div class="emptyPageToFooter"></div>
 
-                    <br/>
+            {% else %}
 
-                    <div class="row">
-                        {% for recipe in recipesUser %}
-                            <div class="col-4 mb-3">
-                                <a class="recipeListUser_linkCard" href="{{ path('blog_read', { id: recipe.id }) }}">
-                                    <div class="card card-recipeListUser">
-                                        <div class="card-header d-flex justify-content-between">
-                                            <span class="recipeListUser_titleCard">{{ recipe.title }}</span>
-                                            <span class="recipeListUser_categoryCard">{{ recipe.category.name|capitalize }}</span>
-                                        </div>
-                                        <div class="col-lg-10 offset-lg-1">
-                                            <small class="recipeListUser_publishedAtCard">Publié le {{ recipe.publishedAt|date("d/m/Y") }}</small>
-                                        </div>
-                                        <img class="card-img-top" src="https://picsum.photos/400/300" alt="{{ recipe.title }}">
+                <div>
+                    <h5>Nombre de recettes publiées : <span class="badge bg-secondary">{{ recipesNumber }}</span></h5>
+                </div>
+
+                <br/>
+
+                <div class="row">
+                    {% for recipe in recipesUser %}
+                        <div class="col-4 mb-3">
+                            <a class="recipeListUser_linkCard" href="{{ path('blog_read', { id: recipe.id }) }}">
+                                <div class="card card-recipeListUser rounded">
+                                    <div class="card-header d-flex justify-content-between">
+                                        <span class="recipeListUser_titleCard">{{ recipe.title }}</span>
+                                        <span class="recipeListUser_categoryCard">{{ recipe.category.name|capitalize }}</span>
                                     </div>
-                                </a>
-                            </div>
-                        {% endfor %}
-                    </div>
+                                    <div class="col-lg-10 offset-lg-1">
+                                        <small class="recipeListUser_publishedAtCard">Publié le {{ recipe.publishedAt|date("d/m/Y") }}</small>
+                                    </div>
+                                    <img class="card-img-top" src="https://picsum.photos/400/300" alt="{{ recipe.title }}">
+                                </div>
+                            </a>
+                        </div>
+                    {% endfor %}
+                </div>
 
-                    <div class="spaceToFooter"></div>
+                <div class="spaceToFooter"></div>
 
             {% endif %}
 
