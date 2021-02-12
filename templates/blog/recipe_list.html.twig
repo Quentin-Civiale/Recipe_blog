@@ -58,7 +58,7 @@
             {% for recipe in recipes %}
                 <div class="col-4 mb-3">
                     <a class="recipeList_linkCard" href="{{ path('blog_read', { id: recipe.id }) }}">
-                        <div class="card card-recipeList">
+                        <div class="card card-recipeList rounded">
                             <div class="card-header d-flex justify-content-between">
                                 <span class="recipeList_titleCard">{{ recipe.title }}</span>
                                 <span class="recipeList_categoryCard">{{ recipe.category.name|capitalize }}</span>
