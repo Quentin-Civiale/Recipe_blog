@@ -1,0 +1,61 @@
+{% extends 'base.html.twig' %}
+
+{% block userAccountSettings %}
+    <br/>
+    <div class="col-lg-10 offset-lg-1">
+        <div class="container">
+            <h1>Paramètres du compte</h1>
+            <p>Retrouvez ici tout les informations de votre compte.</p>
+        </div>
+
+        <hr/>
+
+        <br/>
+
+        <div class="col-lg-8 offset-lg-2">
+            <div class="card card-settingsAccount rounded">
+                <div class="card-body">
+                    <h4 class="card-title">Mon compte</h4>
+                    <h5 class="card-subtitle mb-2 italic-text">Récapitulatif de mon compte</h5>
+                    <hr/>
+                    <div class="col-lg-8 offset-lg-2">
+                        <p class="card-text"><span class="underline">Pseudo :</span> {{ app.user.pseudo }}</p>
+                        <p class="card-text"><span class="underline">Email :</span> {{ app.user.email }}</p>
+                        <p class="card-text"><span class="underline">Nombre de recettes publiées :</span> {{ recipesNumber }}</p>
+                    </div>
+                    <br/>
+                    <hr/>
+                    <br/>
+                    <div class="col-lg-10 offset-lg-1">
+                        <div class="badgesList">
+                            <h5>Mes Badges</h5>
+                            <p>
+                                Les badges sont comme des trophées, ils vous récompensent de votre participation dans la création de recettes,
+                                et par extension, à la vie du site.
+                            </p>
+                            <br/>
+                            {{ include('blog/_badge_collection.html.twig') }}
+                            <hr/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="spaceToFooter"></div>
+
+    </div>
+    <br/>
+
+    {# Script pour l'utilisation des popovers #}
+    <script>
+        var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'))
+        var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
+            return new bootstrap.Popover(popoverTriggerEl)
+        })
+        var popover = new bootstrap.Popover(document.querySelector('.popover-dismiss'), {
+            trigger: 'focus'
+        })
+    </script>
+{% endblock %}
+

@@ -10,6 +10,7 @@
             <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
             <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
             <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
             <link type="text/css" rel="stylesheet" href="{{ asset('css/style.css') }}" />
         {% endblock %}
     </head>
@@ -41,7 +42,8 @@
                             Mon Compte
                         </button>
                         <ul class="dropdown-menu dropdown-menu-lg-end" aria-labelledby="dropdownMenuButton">
-                            <li><a class="dropdown-item recipesUserLink" href="{{ path('recipes_user') }}">Mes recettes</a></li>
+                            <li><a class="dropdown-item recipesUserLink" href="{{ path('recipes_user') }}"><i class="bi bi-journal-text"></i> Mes recettes</a></li>
+                            <li><a class="dropdown-item settingsAccountLink" href="{{ path('account_settings') }}"><i class="bi bi-gear-fill"></i> Paramètres</a></li>
                             <li><hr class="dropdown-divider"></li>
                             <li><a class="dropdown-item logoutLink" href="{{ path('security_logout') }}">Se déconnecter <i class="bi bi-box-arrow-right"></i></a></li>
                         </ul>
@@ -71,6 +73,7 @@
         {% block resetPassword %}{% endblock %}
         {% block recipeList %}{% endblock %}
         {% block currentUserRecipes %}{% endblock %}
+        {% block userAccountSettings %}{% endblock %}
         {% block createRecipe %}{% endblock %}
         {% block readRecipe %}{% endblock %}
         {% block updateRecipe %}{% endblock %}
