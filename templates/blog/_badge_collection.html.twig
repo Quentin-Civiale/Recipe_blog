@@ -1,0 +1,92 @@
+    <div class="row">
+        <div class="container badge-group col-4 mb-3">
+            <img class="badge-logo badgeOff badge-1" id="badgeCollection-1" src="{{ asset('images/cooking_badge.png') }}" alt="">
+            <div class="badge-text center">
+                <a tabindex="0" class="btn btn-secondary" role="button" data-bs-toggle="popover" data-bs-trigger="focus" data-bs-placement="top" data-bs-content="Créer 1 recette">
+                    Aide cuisinier
+                </a>
+            </div>
+        </div>
+        <div class="container badge-group col-4 mb-3">
+            <img class="badge-logo badgeOff badge-2" id="badgeCollection-2" src="{{ asset('images/cooking_badge.png') }}" alt="">
+            <div class="badge-text center">
+                <a tabindex="0" class="btn btn-secondary" role="button" data-bs-toggle="popover" data-bs-trigger="focus" data-bs-placement="top" data-bs-content="Créer 5 recettes">
+                    Plongeur
+                </a>
+            </div>
+        </div>
+        <div class="container badge-group col-4 mb-3">
+            <img class="badge-logo badgeOff badge-3" id="badgeCollection-3" src="{{ asset('images/cooking_badge.png') }}" alt="">
+            <div class="badge-text center">
+                <a tabindex="0" class="btn btn-secondary" role="button" data-bs-toggle="popover" data-bs-trigger="focus" data-bs-placement="top" data-bs-content="Créer 10 recettes">
+                    Commis
+                </a>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="row">
+        <div class="container badge-group col-4 mb-3">
+            <img class="badge-logo badgeOff badge-4" id="badgeCollection-4" src="{{ asset('images/cooking_badge.png') }}" alt="">
+            <div class="badge-text center">
+                <a tabindex="0" class="btn btn-secondary" role="button" data-bs-toggle="popover" data-bs-trigger="focus" data-bs-placement="top" data-bs-content="Créer 20 recettes">
+                    Chef de partie
+                </a>
+            </div>
+        </div>
+        <div class="container badge-group col-4 mb-3">
+            <img class="badge-logo badgeOff badge-5" id="badgeCollection-5" src="{{ asset('images/cooking_badge.png') }}" alt="">
+            <div class="badge-text center">
+                <a tabindex="0" class="btn btn-secondary" role="button" data-bs-toggle="popover" data-bs-trigger="focus" data-bs-placement="top" data-bs-content="Créer 50 recettes">
+                    Sous-chef
+                </a>
+            </div>
+        </div>
+        <div class="container badge-group col-4 mb-3">
+            <img class="badge-logo badgeOff badge-6" id="badgeCollection-6" src="{{ asset('images/cooking_badge.png') }}" alt="">
+            <div class="badge-text center">
+                <a tabindex="0" class="btn btn-secondary" role="button" data-bs-toggle="popover" data-bs-trigger="focus" data-bs-placement="top" data-bs-content="Créer 100 recettes">
+                    Chef de cuisine
+                </a>
+            </div>
+        </div>
+    </div>
+
+    {% if recipesNumber == 0 %}
+
+    {% elseif recipesNumber == 1 or recipesNumber <= 4 %}
+        <script>
+            $("#badgeCollection-1").removeClass('badgeOff');
+        </script>
+    {% elseif recipesNumber == 5 or recipesNumber <= 9 %}
+        <script>
+            $("#badgeCollection-1, #badgeCollection-2").removeClass('badgeOff');
+        </script>
+    {% elseif recipesNumber == 10 or recipesNumber <= 19 %}
+        <script>
+            $("#badgeCollection-1, #badgeCollection-2, #badgeCollection-3").removeClass('badgeOff');
+        </script>
+    {% elseif recipesNumber == 20 or recipesNumber <= 49 %}
+        <script>
+            $("#badgeCollection-1, #badgeCollection-2, #badgeCollection-3, #badgeCollection-4").removeClass('badgeOff');
+        </script>
+    {% elseif recipesNumber == 50 or recipesNumber <= 99 %}
+        <script>
+            $("#badgeCollection-1, #badgeCollection-2, #badgeCollection-3, #badgeCollection-4, #badgeCollection-5").removeClass('badgeOff');
+        </script>
+    {% elseif recipesNumber >= 100 %}
+        <script>
+            $("#badgeCollection-1, #badgeCollection-2, #badgeCollection-3, #badgeCollection-4, #badgeCollection-5, #badgeCollection-6").removeClass('badgeOff');
+        </script>
+    {% endif %}
+
+
+    {#var badge = document.getElementById('badge-1');#}
+    {#badge.classList.remove('badgeOff');#}
+
+    {#document.getElementById('badgeCollection-1').classList.remove('badgeOff');#}
+
+    {#document.getElementById('badgeCollection-1').classList.remove('badgeOff');#}
+    {#document.getElementById('badgeCollection-1').classList.add('badgeOn');#}
+
+    {#$("[id^='badgeCollection']").removeClass('badgeOff');#}

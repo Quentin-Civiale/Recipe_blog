@@ -79,9 +79,23 @@ class BlogController extends AbstractController
         $number = $this->getDoctrine()->getRepository(Recipe::class)->findBy(['user' => $user]);
         $recipesNumber = count($number);
 
-        return $this->render('blog/user_account.html.twig', [
+        return $this->render('blog/user_recipes.html.twig', [
             'recipesUser' => $recipesUser,
             'recipesNumber' => $recipesNumber
+        ]);
+    }
+
+    /**
+     * @Route("/mon-compte/paramètres", name="account_settings")
+     */
+    public function getAccountSettings(): Response
+    {
+        $user = $this->getUser();
+        $number = $this->getDoctrine()->getRepository(Recipe::class)->findBy(['user' => $user]);
+        $recipesNumber = count($number);
+
+        return $this->render('blog/user_account.html.twig', [
+            'recipesNumber' => $recipesNumber,
         ]);
     }
 
