@@ -82,6 +82,12 @@ body {
     text-align: center !important;
     vertical-align: middle !important;
 }
+.underline {
+    text-decoration: underline !important;
+}
+.rounded {
+    border-radius: 15px !important;
+}
 
 /*--------------------------------------------------------------------------------------------------------------------*/
 /* HomePage */
@@ -167,6 +173,15 @@ body {
     color: var(--main-font-color) !important;
     background-color: var(--main-color-two) !important;
 }
+.settingsAccountLink {
+    color: var(--main-color-two) !important;
+    background-color: var(--main-font-color) !important;
+}
+.settingsAccountLink:hover {
+    color: var(--main-font-color) !important;
+    background-color: var(--main-color-two) !important;
+}
+
 .logoutLink {
     color: var(--danger-color) !important;
     background-color: var(--main-font-color) !important;
@@ -456,6 +471,34 @@ body {
 
 .spaceToFooter {
     min-height: 120px !important;
+}
+
+
+.card-settingsAccount {
+    border: 3px solid var(--main-color-two) !important;
+    background-color: var(--main-color-three) !important;
+    overflow: hidden !important;
+}
+
+.badge-group {
+    text-align: center !important;
+    display: table-cell !important;
+    vertical-align: middle !important;
+}
+
+.badge-logo {
+    width: 200px !important;
+    height: 200px !important;
+    border-radius: 200px !important;
+}
+
+.badgeOff {
+    opacity: 0.2 !important;
+    filter: grayscale(100%) !important;
+}
+.badgeOn {
+    opacity: 1 !important;
+    filter: grayscale(0%) !important;
 }
 
 /*--------------------------------------------------------------------------------------------------------------------*/
