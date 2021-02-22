@@ -52,34 +52,32 @@
         </div>
     </div>
 
-    {% if recipesNumber == 0 %}
+    <script>
+        var badgeId = [];
 
-    {% elseif recipesNumber == 1 or recipesNumber <= 4 %}
-        <script>
-            $("#badgeCollection-1").removeClass('badgeOff');
-        </script>
-    {% elseif recipesNumber == 5 or recipesNumber <= 9 %}
-        <script>
-            $("#badgeCollection-1, #badgeCollection-2").removeClass('badgeOff');
-        </script>
-    {% elseif recipesNumber == 10 or recipesNumber <= 19 %}
-        <script>
-            $("#badgeCollection-1, #badgeCollection-2, #badgeCollection-3").removeClass('badgeOff');
-        </script>
-    {% elseif recipesNumber == 20 or recipesNumber <= 49 %}
-        <script>
-            $("#badgeCollection-1, #badgeCollection-2, #badgeCollection-3, #badgeCollection-4").removeClass('badgeOff');
-        </script>
-    {% elseif recipesNumber == 50 or recipesNumber <= 99 %}
-        <script>
-            $("#badgeCollection-1, #badgeCollection-2, #badgeCollection-3, #badgeCollection-4, #badgeCollection-5").removeClass('badgeOff');
-        </script>
-    {% elseif recipesNumber >= 100 %}
-        <script>
-            $("#badgeCollection-1, #badgeCollection-2, #badgeCollection-3, #badgeCollection-4, #badgeCollection-5, #badgeCollection-6").removeClass('badgeOff');
-        </script>
-    {% endif %}
+        {% if recipesNumber == 0 %}
+        {% endif %}
+        {% if recipesNumber in range(1, 4) or recipesNumber >= 4 %}
+            badgeId.push("#badgeCollection-1");
+        {% endif %}
+        {% if recipesNumber in range(5, 9) or recipesNumber >= 9 %}
+            badgeId.push("#badgeCollection-2");
+        {% endif %}
+        {% if recipesNumber in range(10, 19) or recipesNumber >= 19 %}
+            badgeId.push("#badgeCollection-3");
+        {% endif %}
+        {% if recipesNumber in range(20, 49) or recipesNumber >= 49 %}
+            badgeId.push("#badgeCollection-4");
+        {% endif %}
+        {% if recipesNumber in range(50, 99) or recipesNumber >= 99 %}
+            badgeId.push("#badgeCollection-5");
+        {% endif %}
+        {% if recipesNumber >= 100 %}
+            badgeId.push("#badgeCollection-6");
+        {% endif %}
 
+        $(badgeId.join()).removeClass('badgeOff');
+    </script>
 
     {#var badge = document.getElementById('badge-1');#}
     {#badge.classList.remove('badgeOff');#}
