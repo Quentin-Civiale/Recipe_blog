@@ -88,6 +88,9 @@ body {
 .rounded {
     border-radius: 15px !important;
 }
+.hidden {
+    display: none !important;
+}
 
 /*--------------------------------------------------------------------------------------------------------------------*/
 /* HomePage */
@@ -574,8 +577,8 @@ body {
     text-decoration: none !important;
 }
 .recipeList_linkCard:hover {
-    color: var(--main-color-three) !important;
-    text-decoration: none !important;
+    /*color: var(--main-color-three) !important;*/
+    /*text-decoration: none !important;*/
 }
 
 /* Pagination */
@@ -662,6 +665,28 @@ textarea#recipe_content {
 
 /*--------------------------------------------------------------------------------------------------------------------*/
 /* RecipeReadPage */
+
+/* Affichage de note moyenne de la recette */
+.average {
+    color: var(--main-color-two) !important;
+    /*font-size: 25px !important;*/
+    pointer-events: none !important;
+}
+
+/* Notation de la recette via les étoiles */
+.card-stars {
+    border-radius: 33px !important;
+    background-color: var(--main-font-color) !important;
+    color: var(--main-color-three) !important;
+    box-shadow: 0 2px 18px 0 rgba(0,0,0,0.22) !important;
+}
+.rating-stars {
+    color: var(--main-color-three) !important;
+    font-size: 30px !important;
+}
+.hideStarsMessage {
+    display: none !important;
+}
 
 .recipe-img {
     height: 600px !important;

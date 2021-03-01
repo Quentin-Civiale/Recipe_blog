@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Average;
 use App\Entity\Recipe;
 use App\Entity\User;
 use App\Form\RecipeSearchType;
@@ -9,12 +10,12 @@ use App\Form\RecipeType;
 use App\Security\Voter\RecipeVoter;
 use App\Uploader\UploaderInterface;
 use Doctrine\ORM\Tools\Pagination\Paginator;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\String\Slugger\SluggerInterface;
 
 /**
  * Class BlogController
@@ -138,12 +139,40 @@ class BlogController extends AbstractController
     /**
      * @Route("/les-recettes/recette-N°{id}", name="blog_read")
      * @param Recipe $recipe
+     * @param Request $request
      * @return Response
      */
-    public function read(Recipe $recipe): Response
+    public function read(Recipe $recipe, Request $request): Response
     {
+        $em = $this->getDoctrine()->getManager();
+
+        $note = $request->request->get('_note');
+
+        $average = $em->getRepository(Average::class)->findOneByRecipe($recipe->getId());
+
+        if ($note !== null) {
+
+            if (!$average) {
+                $average = new Average();
+                $average->setRecipe($recipe);
+
+                $this->getDoctrine()->getManager()->persist($average);
+            }
+
+            $nbNotes = $average->getNumberScore();
+            $newAverage = (($average->getAverage() * $nbNotes) + $note) / ($nbNotes + 1);
+
+            $average->setAverage($newAverage);
+            $average->setNumberScore($nbNotes + 1);
+
+            $em->flush();
+
+            return $this->redirectToRoute("blog_read", ["id" => $recipe->getId()]);
+        }
+
         return $this->render("blog/read.html.twig", [
-            "recipe" => $recipe
+            "recipe" => $recipe,
+            "average" => $average
         ]);
     }
 

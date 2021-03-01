@@ -13,7 +13,17 @@
     <div class="col-lg-8 offset-lg-2">
         <div class="row">
             <h1>{{ recipe.category.name|capitalize }} - <strong class="italic-text">{{ recipe.title }}</strong></h1>
-            <small>Publié le {{ recipe.publishedAt|date("d/m/Y") }} par {{ recipe.user.pseudo }}</small>
+            <div>
+                {% if average is null %}
+                    <h4>Pas de note pour le moment</h4>
+                {% else %}
+                    <h4>
+                        <span class="average" id="averageScore"></span>
+                        <span>{{ average.average }} / 5 sur {{ average.numberScore }} avis</span>
+                    </h4>
+                {% endif %}
+                <small>Publié le {{ recipe.publishedAt|date("d/m/Y") }} par {{ recipe.user.pseudo }}</small>
+            </div>
         </div>
         <br/>
         <img class="card-img img-fluid img-thumbnail rounded recipe-img" src="{{ asset(recipe.image) }}" alt="{{ recipe.title }}">
@@ -106,4 +116,71 @@
     </div>
 
     <br/>
+
+    <div class="col-lg-6 offset-lg-3">
+        <div class="card card-stars">
+            <br/>
+                <div class="offset-lg-6 col-lg-5 alert alert-success starsMessage hideStarsMessage">
+                    Vous avez donné une note de  <span id="countRatingStars">0</span> étoile(s)
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+                <form class="center" action="{{ path('blog_read', { id: recipe.id }) }}" method="post">
+                    <div>
+                        <h4>Noter cette recette !</h4>
+                    </div>
+                    <div class="rating-stars">
+                        <i class="bi bi-star" data-value="1"></i>
+                        <i class="bi bi-star" data-value="2"></i>
+                        <i class="bi bi-star" data-value="3"></i>
+                        <i class="bi bi-star" data-value="4"></i>
+                        <i class="bi bi-star" data-value="5"></i>
+                    </div>
+                    {% if is_granted("ROLE_USER") %}
+                        <br/>
+                        <input type="hidden" id="note" name="_note" value="0">
+                        <div class="center">
+                            <button class="btn btn-secondary" type="submit">Valider la note</button>
+                        </div>
+                    {% else %}
+                        <p>Pour noter cette recette, veuillez vous connecter.</p>
+                    {% endif %}
+                </form>
+            <br/>
+
+        </div>
+    </div>
+
+    <br/>
+
+    <script>
+        // Conversion de la note de la recette en étoiles + affichage dans la vue
+        {% if average is null %}
+
+        {% else %}
+            document.getElementById("averageScore").innerHTML = getStars({{ average.average }});
+        {% endif %}
+
+        function getStars(rating) {
+
+            // Arrondir à la moitié la plus proche
+            rating = Math.round(rating * 2) / 2;
+            let output = [];
+
+            // Ajouter toutes les étoiles entières remplies
+            for (var i = rating; i >= 1; i--)
+                output.push('<i class="fas fa-star"></i></i>&nbsp;');
+
+            // S'il y a une demi-étoile, l'ajouter
+            if (i == .5)
+                output.push('<i class="fas fa-star-half-alt"></i></i>&nbsp;');
+
+            // Remplir les étoiles vides
+            for (let i = (5 - rating); i >= 1; i--)
+                output.push('<i class="far fa-star"></i></i>&nbsp;');
+
+            return output.join('');
+        }
+    </script>
+
+    <script src="{{ asset('js/ratingStars.js') }}"></script>
 {% endblock %}
