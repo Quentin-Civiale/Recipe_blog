@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block userFavoritesRecipes %}
+    <br/>
+    <div class="col-lg-10 offset-lg-1">
+        <div class="container">
+            <h1>Mes Favoris</h1>
+            <p>Retrouvez ici toutes les recettes enregistrées en favoris</p>
+        </div>
+
+        <hr/>
+
+        <br/>
+
+        <div class="row">
+            {% for recipe in favoritesRecipes %}
+
+                {% if is_granted("ROLE_USER") %}
+                    {% for favorite in recipe.favorite %}
+                        {% if favorite.id == app.user.id and favorite.id > 0 %}
+
+                            <div class="col-4 mb-3">
+                                <a class="recipeListUser_linkCard" href="{{ path('blog_read', { id: recipe.id }) }}">
+                                    <div class="card card-recipeListUser rounded">
+                                        <div class="card-header d-flex justify-content-between">
+                                            <span class="recipeListUser_titleCard">{{ recipe.title }} <i class="fas fa-heart recipeList_favorite"></i></span>
+                                            <span class="recipeListUser_categoryCard">{{ recipe.category.name|capitalize }}</span>
+                                        </div>
+                                        <img class="card-img-top" src="https://picsum.photos/400/300" alt="{{ recipe.title }}">
+                                    </div>
+                                </a>
+                            </div>
+
+{#                        {% else %}#}
+{#                            <p>Vous n'avez mis aucune recette en favoris.</p>#}
+                        {% endif %}
+                    {% endfor %}
+                {% endif %}
+
+            {% endfor %}
+
+        </div>
+
+        <div class="spaceToFooter"></div>
+
+    </div>
+    <br/>
+{% endblock %}
+
