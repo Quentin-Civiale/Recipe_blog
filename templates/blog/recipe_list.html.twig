@@ -60,7 +60,22 @@
                     <a class="recipeList_linkCard" href="{{ path('blog_read', { id: recipe.id }) }}">
                         <div class="card card-recipeList rounded">
                             <div class="card-header d-flex justify-content-between">
-                                <span class="recipeList_titleCard">{{ recipe.title }}</span>
+                                <span class="recipeList_titleCard">
+                                    {{ recipe.title }}
+                                    {% if is_granted("ROLE_USER") %}
+                                        {% for favorite in recipe.favorite %}
+                                            {% if favorite.id == app.user.id %}
+                                                <i class="fas fa-heart recipeList_favorite"></i>
+                                            {% else %}
+                                                <i class="far fa-heart recipeList_favorite"></i>
+                                            {% endif %}
+                                        {% else %}
+                                            <i class="far fa-heart recipeList_favorite"></i>
+                                        {% endfor %}
+                                    {% else %}
+                                        <i class="far fa-heart recipeList_favorite"></i>
+                                    {% endif %}
+                                </span>
                                 <span class="recipeList_categoryCard">{{ recipe.category.name|capitalize }}</span>
                             </div>
                             <img class="card-img-top" src="https://picsum.photos/400/300" alt="{{ recipe.title }}">
