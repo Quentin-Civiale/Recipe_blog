@@ -44,6 +44,7 @@
                         </button>
                         <ul class="dropdown-menu dropdown-menu-lg-end" aria-labelledby="dropdownMenuButton">
                             <li><a class="dropdown-item recipesUserLink" href="{{ path('recipes_user') }}"><i class="bi bi-journal-text"></i> Mes recettes</a></li>
+                            <li><a class="dropdown-item favoritesUserLink" href="{{ path('favorites_recipes_user') }}"><i class="bi bi-suit-heart-fill"></i> Mes favoris</a></li>
                             <li><a class="dropdown-item settingsAccountLink" href="{{ path('account_settings') }}"><i class="bi bi-gear-fill"></i> Paramètres</a></li>
                             <li><hr class="dropdown-divider"></li>
                             <li><a class="dropdown-item logoutLink" href="{{ path('security_logout') }}">Se déconnecter <i class="bi bi-box-arrow-right"></i></a></li>
@@ -74,6 +75,7 @@
         {% block resetPassword %}{% endblock %}
         {% block recipeList %}{% endblock %}
         {% block currentUserRecipes %}{% endblock %}
+        {% block userFavoritesRecipes %}{% endblock %}
         {% block userAccountSettings %}{% endblock %}
         {% block createRecipe %}{% endblock %}
         {% block readRecipe %}{% endblock %}
