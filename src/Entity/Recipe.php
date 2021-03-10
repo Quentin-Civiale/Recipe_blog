@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\RecipeRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -66,11 +68,17 @@ class Recipe
      */
     private $user;
 
+    /**
+     * @ORM\ManyToMany(targetEntity=User::class, inversedBy="favorite")
+     */
+    private $favorite;
+
     //----------------------------------------------------
 
     public function __construct()
     {
         $this->publishedAt = new \DateTime();
+        $this->favorite = new ArrayCollection();
     }
 
     //----------------------------------------------------
@@ -210,5 +218,29 @@ class Recipe
     public function setUser(User $user): void
     {
         $this->user = $user;
+    }
+
+    /**
+     * @return Collection|User[]
+     */
+    public function getFavorite(): Collection
+    {
+        return $this->favorite;
+    }
+
+    public function addFavorite(User $favorite): self
+    {
+        if (!$this->favorite->contains($favorite)) {
+            $this->favorite[] = $favorite;
+        }
+
+        return $this;
+    }
+
+    public function removeFavorite(User $favorite): self
+    {
+        $this->favorite->removeElement($favorite);
+
+        return $this;
     }
 }

@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use DateTimeImmutable;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
 
@@ -49,12 +51,18 @@ class User implements UserInterface
     private $reset_password;
 
     /**
+     * @ORM\ManyToMany(targetEntity=Recipe::class, mappedBy="favorite")
+     */
+    private $favorite;
+
+    /**
      * User constructor.
      * @throws \Exception
      */
     public function __construct()
     {
         $this->registeredAt = new \DateTimeImmutable();
+        $this->favorite = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -164,6 +172,33 @@ class User implements UserInterface
     public function setResetPassword(?string $reset_password): self
     {
         $this->reset_password = $reset_password;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Recipe[]
+     */
+    public function getFavorite(): Collection
+    {
+        return $this->favorite;
+    }
+
+    public function addFavorite(Recipe $favorite): self
+    {
+        if (!$this->favorite->contains($favorite)) {
+            $this->favorite[] = $favorite;
+            $favorite->addFavorite($this);
+        }
+
+        return $this;
+    }
+
+    public function removeFavorite(Recipe $favorite): self
+    {
+        if ($this->favorite->removeElement($favorite)) {
+            $favorite->removeFavorite($this);
+        }
 
         return $this;
     }

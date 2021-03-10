@@ -16,6 +16,7 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Validator\Constraints\IsTrue;
 
 /**
  * Class BlogController
@@ -87,6 +88,19 @@ class BlogController extends AbstractController
     }
 
     /**
+     * @Route("/mon-compte/mes-favoris", name="favorites_recipes_user")
+     * @return Response
+     */
+    public function getFavoritesRecipes(): Response
+    {
+        $favoritesRecipes  = $this->getDoctrine()->getManager()->getRepository(Recipe::class)->findFavoritesRecipes();
+
+        return $this->render('blog/user_favorites.html.twig', [
+            'favoritesRecipes' => $favoritesRecipes
+        ]);
+    }
+
+    /**
      * @Route("/mon-compte/paramètres", name="account_settings")
      */
     public function getAccountSettings(): Response
@@ -98,6 +112,38 @@ class BlogController extends AbstractController
         return $this->render('blog/user_account.html.twig', [
             'recipesNumber' => $recipesNumber,
         ]);
+    }
+
+    /**
+     * @Route("/ajout-de-favoris/recette-N°{id}", name="add_favorite")
+     * @param Recipe $recipe
+     * @return Response
+     */
+    public function addFavorite(Recipe $recipe): Response
+    {
+        $recipe->addFavorite($this->getUser());
+
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($recipe);
+        $em->flush();
+
+        return $this->redirectToRoute("blog_read", ["id" => $recipe->getId()]);
+    }
+
+    /**
+     * @Route("/retrait-de-favoris/recette-N°{id}", name="remove_favorite")
+     * @param Recipe $recipe
+     * @return Response
+     */
+    public function removeFavorite(Recipe $recipe): Response
+    {
+        $recipe->removeFavorite($this->getUser());
+
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($recipe);
+        $em->flush();
+
+        return $this->redirectToRoute("blog_read", ["id" => $recipe->getId()]);
     }
 
     /**

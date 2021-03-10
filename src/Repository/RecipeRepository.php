@@ -36,6 +36,16 @@ class RecipeRepository extends ServiceEntityRepository
             ->getResult();
     }
 
+    public function findFavoritesRecipes(): array
+    {
+        $query = $this->findAllQuery();
+
+        // sélection des recettes misent en favoris
+        return $query->orderBy('r.id', 'DESC')
+            ->getQuery()
+            ->getResult();
+    }
+
     /**
      * @param int $page
      * @param int $limit
