@@ -12,7 +12,21 @@
 
     <div class="col-lg-8 offset-lg-2">
         <div class="row">
-            <h1>{{ recipe.category.name|capitalize }} - <strong class="italic-text">{{ recipe.title }}</strong></h1>
+            <h1>{{ recipe.category.name|capitalize }} - <strong class="italic-text">{{ recipe.title }}</strong>
+                {% if is_granted("ROLE_USER") %}
+                    {% for favorite in recipe.favorite %}
+                        {% if favorite.id == app.user.id %}
+                            <a href="{{ path('remove_favorite', {id: recipe.id}) }}"><i class="bi bi-suit-heart-fill recipeList_favorite"></i></a>
+                        {% else %}
+                            <a href="{{ path('add_favorite', {id: recipe.id}) }}"><i class="bi bi-suit-heart recipeList_favorite"></i></a>
+                        {% endif %}
+                    {% else %}
+                        <a href="{{ path('add_favorite', {id: recipe.id}) }}"><i class="bi bi-suit-heart recipeList_favorite"></i></a>
+                    {% endfor %}
+                {% else %}
+                    <i class="bi bi-suit-heart recipeList_favorite"></i>
+                {% endif %}
+            </h1>
             <div>
                 {% if average is null %}
                     <h4>Pas de note pour le moment</h4>
