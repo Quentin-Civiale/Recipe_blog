@@ -176,6 +176,14 @@ body {
     color: var(--main-font-color) !important;
     background-color: var(--main-color-two) !important;
 }
+.favoritesUserLink {
+    color: var(--main-color-two) !important;
+    background-color: var(--main-font-color) !important;
+}
+.favoritesUserLink:hover {
+    color: var(--main-font-color) !important;
+    background-color: var(--main-color-two) !important;
+}
 .settingsAccountLink {
     color: var(--main-color-two) !important;
     background-color: var(--main-font-color) !important;
@@ -563,6 +571,10 @@ body {
 .recipeList_titleCard {
     color: var(--main-font-color) !important;
     font-size: 25px !important;
+}
+.recipeList_favorite {
+    font-size: 20px !important;
+    color: var(--danger-color) !important;
 }
 .recipeList_categoryCard {
     color: var(--main-font-color) !important;
