@@ -5,6 +5,7 @@ namespace App\Form;
 use App\Entity\Recipe;
 use FOS\CKEditorBundle\Form\Type\CKEditorType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -67,6 +68,14 @@ class RecipeType extends AbstractType
             ->add('cookingTime', TimeType::class, [
                 "label" => "Temps de cuisson :",
                 "required" => false
+            ])
+            ->add('ingredients', CollectionType::class, [
+                'label' => 'Les ingrédients : ',
+                'entry_type' => IngredientType::class,
+                'allow_add' => true,
+                'allow_delete' => true,
+                'prototype' => true,
+                'by_reference' => false,
             ])
         ;
     }

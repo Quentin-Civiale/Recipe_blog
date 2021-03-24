@@ -6,6 +6,7 @@ use App\Repository\RecipeRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=RecipeRepository::class)
@@ -73,12 +74,21 @@ class Recipe
      */
     private $favorite;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Ingredient::class, mappedBy="recipe", cascade={"persist", "remove"})
+     * @Assert\Valid()
+     */
+    private $ingredients;
+
     //----------------------------------------------------
 
     public function __construct()
     {
         $this->publishedAt = new \DateTime();
         $this->favorite = new ArrayCollection();
+        $this->ingredients = new ArrayCollection();
+        $newIngredient = new Ingredient();
+        $this->addIngredient($newIngredient);
     }
 
     //----------------------------------------------------
@@ -243,4 +253,62 @@ class Recipe
 
         return $this;
     }
+
+    //---------------------------------------------------------------------
+
+//    /**
+//     * @return Collection|Ingredient[]
+//     */
+//    public function getIngredients(): Collection
+//    {
+//        return $this->ingredients;
+//    }
+//
+//    public function addIngredient(Ingredient $ingredient): self
+//    {
+//        if (!$this->ingredients->contains($ingredient)) {
+//            $this->ingredients[] = $ingredient;
+//            $ingredient->addRecipe($this);
+//        }
+//
+//        return $this;
+//    }
+//
+//    public function removeIngredient(Ingredient $ingredient): self
+//    {
+//        if ($this->ingredients->removeElement($ingredient)) {
+//            $ingredient->removeRecipe($this);
+//        }
+//
+//        return $this;
+//    }
+
+    //-------------------------------------------------------------
+
+    public function addIngredient(Ingredient $ingredient)
+    {
+        if ($this->ingredients->contains($ingredient)) {
+            return;
+        }
+
+        $this->ingredients->add($ingredient);
+
+        $ingredient->setRecipe($this);
+    }
+
+    public function removeIngredient(Ingredient $ingredient)
+    {
+        $this->ingredients->removeElement($ingredient);
+    }
+
+//    public function getIngredients(): ArrayCollection
+//    {
+//        return $this->ingredients;
+//    }
+
+    public function getIngredients(): Collection
+    {
+        return $this->ingredients;
+    }
+
 }
