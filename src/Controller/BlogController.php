@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Average;
+use App\Entity\Ingredient;
 use App\Entity\Recipe;
 use App\Entity\User;
 use App\Form\RecipeSearchType;
@@ -146,6 +147,31 @@ class BlogController extends AbstractController
         return $this->redirectToRoute("blog_read", ["id" => $recipe->getId()]);
     }
 
+//    /**
+//     * @param Request $request
+//     * @return Response
+//     */
+//    public function ingredientForm(Request $request): Response
+//    {
+//        $ingredient = new Ingredient();
+//
+//        $form = $this->createForm(Ingredient::class, $ingredient);
+//
+//        $form->handleRequest($request);
+//
+//        if ($form->isSubmitted() && $form->isValid()) {
+//            $em = $this->getDoctrine()->getManager();
+//            $em->persist($ingredient);
+//            $em->flush();
+//
+//            return new Response('Ingrédient ajouté !');
+//        }
+//
+//        return $this->render('ingredient.html.twig', [
+//            'form' => $form->createView()
+//        ]);
+//    }
+
     /**
      * @Route("/publier-recette", name="blog_create")
      * @param Request $request
@@ -196,6 +222,9 @@ class BlogController extends AbstractController
 
         $average = $em->getRepository(Average::class)->findOneByRecipe($recipe->getId());
 
+        $repository = $this->getDoctrine()->getRepository(Ingredient::class);
+        $ingredient = $repository->findBy(['recipe' => $recipe->getId()]);
+
         if ($note !== null) {
 
             if (!$average) {
@@ -218,6 +247,7 @@ class BlogController extends AbstractController
 
         return $this->render("blog/read.html.twig", [
             "recipe" => $recipe,
+            "ingredient" => $ingredient,
             "average" => $average
         ]);
     }
@@ -236,7 +266,6 @@ class BlogController extends AbstractController
         $form = $this->createForm(RecipeType::class, $recipe)->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-
             /** @var UploadedFile $file */
             $file = $form->get("file")->getData();
 
