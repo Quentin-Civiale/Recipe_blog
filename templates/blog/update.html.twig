@@ -50,6 +50,13 @@
                 </div>
             </div>
             <br/>
+            <hr/>
+            <div class="mb-4">
+                <p>Les ingrédients :</p>
+                {{ form_widget(form.ingredients) }}
+            </div>
+            <hr/>
+            <br/>
             <div class="mb-4">
                 {{ form_row(form.content | raw ) }}
             </div>

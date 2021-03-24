@@ -64,12 +64,9 @@
                     <br/>
                     <div class="col-lg-10 offset-lg-1">
                         <h3><i class="bi bi-cart3"></i> Listes des ingrédients :</h3>
-                        <p>- Ingrédient N°1</p>
-                        <p>- Ingrédient N°2</p>
-                        <p>- Ingrédient N°3</p>
-                        <p>- Ingrédient N°4</p>
-                        <p>- Ingrédient N°5</p>
-                        <p>- Ingrédient N°6</p>
+                        {% for ingredient in ingredient %}
+                            <p> - {{ ingredient.proportion }} {{ ingredient.name }}</p>
+                        {% endfor %}
                     </div>
                 </div>
             </div>

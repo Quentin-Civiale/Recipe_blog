@@ -36,6 +36,16 @@
                     </div>
                 </div>
                 <br/>
+                <hr/>
+                <div class="mb-4">
+{#                    <div class="ingredientForm">#}
+{#                        <h5>Ingrédient N°1</h5>#}
+{#                    </div>#}
+                    <p>Les ingédients :</p>
+                    {{ form_widget(form.ingredients) }}
+                </div>
+                <hr/>
+                <br/>
                 <div class="mb-4">
                     {{ form_row(form.content) }}
                 </div>
