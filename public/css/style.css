@@ -639,6 +639,77 @@ body {
     border-color: 2px solid var(--main-color-two) !important;
 }
 
+/* Les Ingrédients */
+
+#recipe_ingredients_0 {
+    margin-left: 130px !important;
+}
+
+.ingredientForm {
+    margin-bottom: -25px !important;
+}
+
+div[id^=recipe_ingredients_]
+{
+    margin-left: 130px !important;
+}
+
+#addIngredientButton {
+    margin-left: 450px !important;
+    /*margin-top: -35px !important;*/
+}
+
+#removeIngredientButtonWeb {
+    margin-left: 850px !important;
+    margin-top: -70px !important;
+}
+
+#recipe_ingredients > div > div > label {
+    display: none !important;
+}
+
+#recipe_ingredients_0 > div {
+    margin-left: 60px !important;
+    /*margin-top: -35px !important;*/
+}
+
+#recipe_ingredients_0 > div:last-child {
+    margin-left: 400px !important;
+    margin-top: -35px !important;
+}
+
+#recipe_ingredients > div > div > div > div {
+    margin-left: 60px !important;
+    /*margin-top: -35px !important;*/
+}
+
+#recipe_ingredients > div > div > div > div:last-child {
+    margin-left: 400px !important;
+    margin-top: -35px !important;
+}
+
+#recipe_ingredients > div > label {
+    display: none !important;
+}
+
+input[id^=recipe_ingredients_] {
+    color: var(--main-color-two) !important;
+    background-color: var(--main-font-color) !important;
+    border-color: 2px solid var(--main-color-two) !important;
+    margin-bottom: 6px !important;
+}
+
+/*Champs Proportion et Ingrédient */
+#recipe_ingredients > div > div[id^=recipe_ingredients_] > div {
+    margin-left: 60px !important;
+    /*margin-top: -35px !important;*/
+}
+#recipe_ingredients > div > div[id^=recipe_ingredients_] > div:last-child {
+    margin-left: 400px !important;
+    margin-top: -35px !important;
+}
+
+
 #recipe_content {
     color: var(--main-color-two) !important;
     background-color: var(--main-font-color) !important;
