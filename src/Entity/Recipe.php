@@ -7,6 +7,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass=RecipeRepository::class)
@@ -18,21 +19,25 @@ class Recipe
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups({"get"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"get"})
      */
     private $title;
 
     /**
      * @ORM\Column(type="text")
+     * @Groups({"get"})
      */
     private $content;
 
     /**
      * @ORM\Column(type="datetime", name="published_at")
+     * @Groups({"get"})
      */
     private $publishedAt;
 
@@ -71,6 +76,7 @@ class Recipe
 
     /**
      * @ORM\ManyToMany(targetEntity=User::class, inversedBy="favorite")
+     * @Groups({"get"})
      */
     private $favorite;
 
