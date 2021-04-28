@@ -771,6 +771,14 @@ textarea#recipe_content {
     display: none !important;
 }
 
+/*#removeFavourite {*/
+/*    display: none;*/
+/*}*/
+
+#addFavourite, #removeFavourite {
+    cursor: pointer !important;
+}
+
 .recipe-img {
     height: 600px !important;
     width: 1200px !important;

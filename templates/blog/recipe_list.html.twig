@@ -62,18 +62,34 @@
                             <div class="card-header d-flex justify-content-between">
                                 <span class="recipeList_titleCard">
                                     {{ recipe.title }}
+{#                                    {% if is_granted("ROLE_USER") %}#}
+{#                                        {% for favorite in recipe.favorite %}#}
+{#                                            {% if favorite.id == app.user.id %}#}
+{#                                                <i class="fas fa-heart recipeList_favorite"></i>#}
+{#                                            {% else %}#}
+{#                                                <i class="far fa-heart recipeList_favorite"></i>#}
+{#                                            {% endif %}#}
+{#                                        {% else %}#}
+{#                                            <i class="far fa-heart recipeList_favorite"></i>#}
+{#                                        {% endfor %}#}
+{#                                    {% else %}#}
+{#                                        <i class="far fa-heart recipeList_favorite"></i>#}
+{#                                    {% endif %}#}
+
                                     {% if is_granted("ROLE_USER") %}
+                                        {% set isFavorite = false %}
                                         {% for favorite in recipe.favorite %}
                                             {% if favorite.id == app.user.id %}
-                                                <i class="fas fa-heart recipeList_favorite"></i>
-                                            {% else %}
-                                                <i class="far fa-heart recipeList_favorite"></i>
+                                                {% set isFavorite = true %}
                                             {% endif %}
-                                        {% else %}
-                                            <i class="far fa-heart recipeList_favorite"></i>
                                         {% endfor %}
+                                        {% if isFavorite %}
+                                            <i class="bi bi-suit-heart-fill recipeList_favorite"></i>
+                                        {% else %}
+                                            <i class="bi bi-suit-heart recipeList_favorite"></i>
+                                        {% endif %}
                                     {% else %}
-                                        <i class="far fa-heart recipeList_favorite"></i>
+                                        <i class="bi bi-suit-heart recipeList_favorite"></i>
                                     {% endif %}
                                 </span>
                                 <span class="recipeList_categoryCard">{{ recipe.category.name|capitalize }}</span>

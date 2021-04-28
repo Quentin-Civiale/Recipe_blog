@@ -7,9 +7,16 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
+use ApiPlatform\Core\Annotation\ApiResource;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
+ *
+ * @ApiResource(
+ *     normalizationContext={"groups"={"user:read"}},
+ *     denormalizationContext={"groups"={"user:write"}}
+ * )
  */
 class User implements UserInterface
 {
@@ -18,30 +25,40 @@ class User implements UserInterface
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     *
+     * @Groups("user:read")
      */
     private $id;
 
     /**
      * @var string|null
      * @ORM\Column(unique=true)
+     *
+     * @Groups({"user:read", "user:write"})
      */
     private $email = null;
 
     /**
      * @var string|null
      * @ORM\Column()
+     *
+     * @Groups("user:write")
      */
     private $password = null;
 
     /**
      * @var string|null
      * @ORM\Column(unique=true)
+     *
+     * @Groups({"user:read", "user:write"})
      */
     private $pseudo = null;
 
     /**
      * @var \DateTimeImmutable
      * @ORM\Column(type="datetime_immutable")
+     *
+     * @Groups("user:read")
      */
     private $registeredAt;
 
@@ -52,6 +69,8 @@ class User implements UserInterface
 
     /**
      * @ORM\ManyToMany(targetEntity=Recipe::class, mappedBy="favorite")
+     *
+     * @Groups("user:read")
      */
     private $favorite;
 
