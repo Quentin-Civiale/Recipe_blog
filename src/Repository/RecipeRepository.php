@@ -25,6 +25,79 @@ class RecipeRepository extends ServiceEntityRepository
         return $this->createQueryBuilder('r');
     }
 
+    public function findStarters(): array
+    {
+        $query = $this->findAllQuery();
+
+        return $query
+            ->orderBy('r.id', 'DESC')
+            ->leftJoin('r.category', 'c')
+            ->andWhere('c.name LIKE :name')
+            ->setParameter('name', 'entrée')
+            ->getQuery()
+            ->getResult();
+    }
+
+    public function findMeals(): array
+    {
+        $query = $this->findAllQuery();
+
+        // sélection des recettes de la catégorie Entrées
+        return $query
+            ->orderBy('r.id', 'DESC')
+            ->leftJoin('r.category', 'c')
+            ->andWhere('c.name LIKE :name')
+            ->setParameter('name', 'plat')
+            ->getQuery()
+            ->getResult();
+
+//        return $this->findBy(['title' => 'pancake']);
+//        return $this->findBy(['category' => '4']);
+//        return $this->findBy(['category' => 'plat']);
+    }
+
+    public function findDesserts(): array
+    {
+        $query = $this->findAllQuery();
+
+        // sélection des recettes de la catégorie Entrées
+        return $query
+            ->orderBy('r.id', 'DESC')
+            ->leftJoin('r.category', 'c')
+            ->andWhere('c.name LIKE :name')
+            ->setParameter('name', 'dessert')
+            ->getQuery()
+            ->getResult();
+    }
+
+    public function findDrinks(): array
+    {
+        $query = $this->findAllQuery();
+
+        // sélection des recettes de la catégorie Entrées
+        return $query
+            ->orderBy('r.id', 'DESC')
+            ->leftJoin('r.category', 'c')
+            ->andWhere('c.name LIKE :name')
+            ->setParameter('name', 'cocktail & boisson')
+            ->getQuery()
+            ->getResult();
+    }
+
+    public function findSauces(): array
+    {
+        $query = $this->findAllQuery();
+
+        // sélection des recettes de la catégorie Entrées
+        return $query
+            ->orderBy('r.id', 'DESC')
+            ->leftJoin('r.category', 'c')
+            ->andWhere('c.name LIKE :name')
+            ->setParameter('name', 'sauce')
+            ->getQuery()
+            ->getResult();
+    }
+
     public function findLatestRecipe(): array
     {
         $query = $this->findAllQuery();
