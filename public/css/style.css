@@ -334,6 +334,26 @@ body {
     visibility: visible;
 }
 
+
+/*--------------------------------------------------------------------------------------------------------------------*/
+/* CategoryPage (Starters, meals, desserts, drinks, sauces) */
+
+/*.category-link {*/
+/*    color: var(--main-color-one) !important;*/
+/*    border: 3px solid var(--main-font-color) !important;*/
+/*    border-radius: 30px !important;*/
+/*}*/
+.category-link.active {
+    color: var(--main-color-two) !important;
+    background-color: var(--main-font-color) !important;
+    border: 3px solid var(--main-color-two) !important;
+}
+.category-link:hover {
+    color: var(--main-color-two) !important;
+    background-color: var(--main-font-color) !important;
+    border: 3px solid var(--main-color-two) !important;
+}
+
 /*--------------------------------------------------------------------------------------------------------------------*/
 /* RegistrationPage */
 
