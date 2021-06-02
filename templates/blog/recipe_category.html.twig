@@ -1,0 +1,73 @@
+{% extends 'base.html.twig' %}
+
+{% block categoriesRecipes %}
+    <br/>
+    <div class="col-lg-10 offset-lg-1">
+
+        <br/>
+
+        <div class="col-lg-10 offset-lg-1">
+            <div class="container">
+                <div class="row">
+                    <a class="btn btn-categoryHome category-link col-lg-2" href="{{ path('recipe_list') }}">Toutes les recettes</a>
+                    <a {% if 'recipe_starters' in app.request.attributes.get('_route') %} class="active btn btn-categoryHome category-link col-lg-2" {% endif %} class="btn btn-categoryHome category-link col-lg-2" href="{{ path('recipe_starters') }}">Entrées</a>
+                    <a {% if 'recipe_meals' in app.request.attributes.get('_route') %} class="active btn btn-categoryHome category-link col-lg-2" {% endif %} class="btn btn-categoryHome category-link col-lg-2" href="{{ path('recipe_meals') }}">Plats</a>
+                    <a {% if 'recipe_desserts' in app.request.attributes.get('_route') %} class="active btn btn-categoryHome category-link col-lg-2" {% endif %} class="btn btn-categoryHome category-link col-lg-2" href="{{ path('recipe_desserts') }}">Desserts</a>
+                    <a {% if 'recipe_drinks' in app.request.attributes.get('_route') %} class="active btn btn-categoryHome category-link col-lg-2" {% endif %} class="btn btn-categoryHome category-link col-lg-2" href="{{ path('recipe_drinks') }}">Boissons</a>
+                    <a {% if 'recipe_sauces' in app.request.attributes.get('_route') %} class="active btn btn-categoryHome category-link col-lg-2" {% endif %} class="btn btn-categoryHome category-link col-lg-2" href="{{ path('recipe_sauces') }}">Sauces</a>
+                </div>
+            </div>
+        </div>
+
+        <br/>
+
+        <hr/>
+
+        <div class="container">
+            {% if 'recipe_starters' in app.request.attributes.get('_route') %}
+                <h1>Les Entrées</h1>
+                <p>Retrouvez ici toutes les entrées publiées sur le site.</p>
+            {% elseif 'recipe_meals' in app.request.attributes.get('_route') %}
+                <h1>Les Plats</h1>
+                <p>Retrouvez ici tous les plats publiés sur le site.</p>
+            {% elseif 'recipe_desserts' in app.request.attributes.get('_route') %}
+                <h1>Les Desserts</h1>
+                <p>Retrouvez ici tous les desserts publiés sur le site.</p>
+            {% elseif 'recipe_drinks' in app.request.attributes.get('_route') %}
+                <h1>Les Cocktails & boissons</h1>
+                <p>Retrouvez ici toutes les boissons publiées sur le site.</p>
+            {% elseif 'recipe_sauces' in app.request.attributes.get('_route') %}
+                <h1>Les Sauces</h1>
+                <p>Retrouvez ici toutes les sauces publiées sur le site.</p>
+            {% endif %}
+        </div>
+
+        <hr/>
+
+        <br/>
+
+        <div class="row">
+            {% for recipe in recipes %}
+                <div class="col-4 mb-3">
+                    <a class="recipeListUser_linkCard" href="{{ path('blog_read', { id: recipe.id }) }}">
+                        <div class="card card-recipeListUser rounded">
+                            <div class="card-header d-flex justify-content-between">
+                                <span class="recipeListUser_titleCard">{{ recipe.title }}</span>
+                                <span class="recipeListUser_categoryCard">{{ recipe.category.name|capitalize }}</span>
+                            </div>
+                            <div class="col-lg-10 offset-lg-1">
+                                <small class="recipeListUser_publishedAtCard">Publié le {{ recipe.publishedAt|date("d/m/Y") }}</small>
+                            </div>
+                            <img class="card-img-top" src="https://picsum.photos/400/300" alt="{{ recipe.title }}">
+                        </div>
+                    </a>
+                </div>
+            {% endfor %}
+        </div>
+
+        <div class="spaceToFooter"></div>
+
+    </div>
+    <br/>
+{% endblock %}
+
