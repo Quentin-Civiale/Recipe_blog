@@ -19,10 +19,10 @@ function addIngredientForm($collectionHolder, $newLinkLi) {
     newForm = newForm.replace(/__name__/g, index);
 
     // augmente l'index avec un pour l'élément suivant
-    // $collectionHolder.data('index', index + 1);
+    $collectionHolder.data('index', index + 1);
 
     // Ajoute +1 à chaque nouvel ingrédient de la vue
-    // ingredientNumber++;
+    ingredientNumber++;
 
     // Affiche le formulaire dans un div, avant le lien et après chaque nouvel ajout d'ingrédient
     // var $newFormLi = $('<div><hr/><div class="ingredientForm"><h5>Ingrédient N°'+ingredientNumber+'</h5></div></div>').append(newForm);
@@ -67,7 +67,7 @@ function addIngredientFormDeleteLink($ingredientFormLi) {
         $ingredientFormLi.remove();
 
         // Reduit de 1 à chaque suppression d'ingrédient sur la recette
-        // ingredientNumber--;
+        ingredientNumber--;
         //
         // var ingredients = document.getElementsByClassName("ingredientForm");
         // for (var i = 0; i < ingredients.length; i++)
