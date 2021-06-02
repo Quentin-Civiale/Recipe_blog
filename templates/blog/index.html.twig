@@ -67,10 +67,10 @@
         <div class="col-lg-6 offset-lg-3">
             <div class="container">
                 <div class="row">
-                    <button class="btn btn-categoryHome col-lg-3">Toutes les recettes</button>
-                    <button class="btn btn-categoryHome col-lg-3">Entrées</button>
-                    <button class="btn btn-categoryHome col-lg-3">Plats</button>
-                    <button class="btn btn-categoryHome col-lg-3">Desserts</button>
+                    <a class="btn btn-categoryHome col-lg-3" href="{{ path('recipe_list') }}">Toutes les recettes</a>
+                    <a class="btn btn-categoryHome col-lg-3" href="{{ path('recipe_starters') }}">Entrées</a>
+                    <a class="btn btn-categoryHome col-lg-3" href="{{ path('recipe_meals') }}">Plats</a>
+                    <a class="btn btn-categoryHome col-lg-3" href="{{ path('recipe_desserts') }}">Desserts</a>
                 </div>
             </div>
         </div>
